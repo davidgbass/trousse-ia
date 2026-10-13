@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trousse IA</title>
+<meta name="description" content="Trousse de la conférence « L’IA, nouvel acteur de l’équipe », Congrès 2026 des audioprothésistes du Québec.">
+<style>
+:root{--ink:#1C2A33;--muted:#5E6B73;--teal:#004250;--teal2:#005B67;--bg:#FFFFFF;--soft:#F4F7F8;--line:#D5DEE2;--card:#FFFFFF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6ECEF;--muted:#A3B0B7;--teal:#7FC8D4;--teal2:#9AD6E0;--bg:#111A1F;--soft:#18242A;--line:#2C3A41}}
+:root[data-theme="dark"]{--ink:#E6ECEF;--muted:#A3B0B7;--teal:#7FC8D4;--teal2:#9AD6E0;--bg:#111A1F;--soft:#18242A;--line:#2C3A41}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Arial,Helvetica,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{background:var(--soft);border-bottom:1px solid var(--line);padding:40px 0 28px}
+.sur{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:bold;margin:0 0 8px}
+h1{font-size:32px;line-height:1.15;margin:0 0 8px}
+.sous{font-size:19px;color:var(--muted);margin:0 0 16px}
+.auteur{font-size:15px;color:var(--muted);margin:0}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav a{flex:0 0 auto;font-size:14px;color:var(--teal);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;white-space:nowrap}
+nav a:hover{background:var(--soft)}
+section{padding:40px 0 8px;scroll-margin-top:56px}
+h2{font-size:26px;line-height:1.2;margin:0 0 6px}
+h3{font-size:19px;margin:0 0 6px}
+.intro{color:var(--muted);margin:0 0 20px}
+.cartes{display:grid;gap:14px}
+.carte{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--bg)}
+.num{display:inline-block;font-size:13px;font-weight:bold;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.duo{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+@media (min-width:640px){.duo{grid-template-columns:1fr 1fr}}
+.duo div{background:var(--soft);border-radius:8px;padding:12px}
+.duo b{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.duo .fais b{color:var(--teal)}
+.pourquoi{font-size:15px;color:var(--muted);margin:0}
+.marche{display:grid;grid-template-columns:48px 1fr;gap:14px;border-top:1px solid var(--line);padding:16px 0}
+.marche:first-of-type{border-top:0}
+.chiffre{width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:20px}
+.monter{margin:8px 0 0;font-size:15px}
+.monter b{color:var(--teal)}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:4px 0}
+.gabarit{position:relative;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:18px;margin:12px 0;white-space:pre-wrap;font:15px/1.5 Menlo,Consolas,monospace;overflow-wrap:anywhere}
+button{font:inherit;font-size:15px;cursor:pointer;border:1px solid var(--teal);background:var(--teal);color:var(--bg);border-radius:8px;padding:8px 14px}
+button.second{background:transparent;color:var(--teal)}
+.outils{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0}
+th,td{text-align:left;vertical-align:top;border-top:1px solid var(--line);padding:10px 8px}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tableau{overflow-x:auto}
+.phrase{font-size:20px;line-height:1.4;margin:0}
+.verif li{list-style:none;position:relative;padding-left:30px;margin:10px 0}
+.verif li::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border:2px solid var(--teal);border-radius:4px}
+.note{font-size:15px;color:var(--muted)}
+.refs li{font-size:15px;margin:6px 0}
+.refs a{color:var(--teal2)}
+a{color:var(--teal2)}
+footer{margin-top:48px;padding:24px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+#fiche .feuille{border:1px solid var(--line);border-radius:12px;padding:22px}
+#fiche .feuille h3{font-size:22px}
+.ligne{border-bottom:1px solid var(--muted);height:28px;margin:6px 0 14px}
+@media print{
+  body{font-size:12.5pt;background:#fff;color:#000}
+  nav,header,footer,.no-print{display:none!important}
+  body.imprime-fiche section:not(#fiche){display:none}
+  body.imprime-fiche #fiche .intro,body.imprime-fiche #fiche h2{display:none}
+  section{padding:0}
+  .carte,.feuille{border-color:#999;break-inside:avoid}
+  #fiche .feuille{border:0;padding:0}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="sur">Congrès 2026 · Ordre des audioprothésistes du Québec</p>
+    <h1>L’IA, nouvel acteur de l’équipe</h1>
+    <p class="sous">Piloter l’IA en gardant son jugement professionnel</p>
+    <p class="auteur">La trousse de la conférence de David Gélinas, audioprothésiste</p>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#gestes">Les 4 gestes</a>
+    <a href="#marches">Les 5 marches</a>
+    <a href="#consignes">Gabarit de consignes</a>
+    <a href="#projets">Projets et Gems</a>
+    <a href="#patient">Trois phrases</a>
+    <a href="#fiche">Fiche patient</a>
+    <a href="#verification">Vérifier une note</a>
+    <a href="#references">Références</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="gestes">
+  <h2>Quatre pièges, quatre gestes</h2>
+  <p class="intro">Chaque piège a un nom dans notre tête et un nom dans la machine. Le geste se fait au moment d’écrire la demande.</p>
+  <div class="cartes">
+    <article class="carte">
+      <span class="num">Piège 1 · L’IA écrit bien</span>
+      <h3>Le biais de fluidité</h3>
+      <div class="duo">
+        <div><b>Au lieu de</b>Croire la réponse parce qu’elle est bien écrite.</div>
+        <div class="fais"><b>Je fais</b>« Cite la phrase exacte qui appuie chaque affirmation. » Puis j’ouvre la source.</div>
+      </div>
+      <p class="pourquoi">Un texte facile à lire nous paraît plus vrai, même quand il est faux. L’IA écrit le vrai et le faux avec le même soin.</p>
+    </article>
+    <article class="carte">
+      <span class="num">Piège 2 · L’IA nous donne raison</span>
+      <h3>Le biais de confirmation et la complaisance</h3>
+      <div class="duo">
+        <div><b>Au lieu de</b>« Je pense que c’est le catalyseur. J’ai raison? »</div>
+        <div class="fais"><b>Je fais</b>« Quelles sont les causes possibles, de la plus probable à la moins probable? »</div>
+      </div>
+      <p class="pourquoi">Si la question contient mon opinion, la réponse penche de son côté. Pour aller plus loin, je lui demande d’attaquer ma conclusion : « Donne-moi les trois raisons les plus probables pour lesquelles je me trompe. »</p>
+    </article>
+    <article class="carte">
+      <span class="num">Piège 3 · L’IA remplit les trous</span>
+      <h3>Le besoin de clôture cognitive</h3>
+      <div class="duo">
+        <div><b>Au lieu de</b>« Explique-moi ce résultat de test. »</div>
+        <div class="fais"><b>Je fais</b>« Avant de répondre, pose-moi tes questions jusqu’à être certain à 95 % d’avoir compris. Si tu ne sais pas, dis-le. »</div>
+      </div>
+      <p class="pourquoi">Une simple consigne de prudence a fait passer les inventions reprises par l’IA de 65 % à 8 % dans une étude sur des cas cliniques.</p>
+    </article>
+    <article class="carte">
+      <span class="num">Piège 4 · L’IA décide pour nous</span>
+      <h3>Le biais d’automatisation</h3>
+      <div class="duo">
+        <div><b>Au lieu de</b>Lire la réponse de l’IA en premier.</div>
+        <div class="fais"><b>Je fais</b>« Partage-moi ton plan avant de faire l’analyse, on réfléchit ensemble. »</div>
+      </div>
+      <p class="pourquoi">La première réponse lue devient l’ancre de notre jugement. Même des radiologistes expérimentés sont passés de 82 % à 46 % de bonnes lectures quand l’IA suggérait une mauvaise réponse.</p>
+    </article>
+  </div>
+</section>
+
+<section id="marches">
+  <h2>Cinq marches</h2>
+  <p class="intro">Ce qui change d’une marche à l’autre, c’est ce que vous apportez à l’IA. Trouvez votre marche, et essayez cette semaine le geste qui fait monter à la suivante.</p>
+  <div class="marche">
+    <div class="chiffre">1</div>
+    <div>
+      <h3>Lui poser une question</h3>
+      <ul>
+        <li>Dicter sa demande plutôt que la taper : on donne plus de contexte en moins de temps.</li>
+        <li>« Explique ton raisonnement avant de conclure. »</li>
+        <li>Anonymiser, et désactiver l’option qui sert à entraîner le modèle avec vos conversations.</li>
+      </ul>
+      <p class="monter"><b>Pour monter :</b> lui donner ses sources, et exiger qu’elle s’y limite.</p>
+    </div>
+  </div>
+  <div class="marche">
+    <div class="chiffre">2</div>
+    <div>
+      <h3>Lui donner ses sources</h3>
+      <ul>
+        <li>« Réponds seulement à partir de ce document. Si l’information est absente, dis-le. »</li>
+        <li>Pour une recherche, exiger les liens, puis les ouvrir.</li>
+        <li>Le méta-prompting : « Écris-moi la meilleure demande pour obtenir ceci, et pose-moi les questions qu’il te manque. »</li>
+        <li>Aucun document de patient dans un outil grand public.</li>
+      </ul>
+      <p class="monter"><b>Pour monter :</b> écrire ses règles une fois, et les tester.</p>
+    </div>
+  </div>
+  <div class="marche">
+    <div class="chiffre">3</div>
+    <div>
+      <h3>Écrire ses propres règles</h3>
+      <ul>
+        <li>Coller ses règles dans les instructions personnalisées (gabarit plus bas).</li>
+        <li>Créer un projet avec ses documents de référence (Claude, ChatGPT) ou un Gem (Gemini).</li>
+        <li>Ouvrir une conversation temporaire pour obtenir un avis neutre.</li>
+        <li>Relire de temps en temps ce que la mémoire de l’outil a retenu.</li>
+      </ul>
+      <p class="monter"><b>Pour monter :</b> faire critiquer une réponse importante par une autre IA.</p>
+    </div>
+  </div>
+  <div class="marche">
+    <div class="chiffre">4</div>
+    <div>
+      <h3>Faire travailler plusieurs IA</h3>
+      <ul>
+        <li>Choisir l’IA selon la tâche : recherche, écriture, images, balados.</li>
+        <li>Faire critiquer une réponse importante par une autre IA. Les modèles partagent souvent les mêmes angles morts : le jugement final reste le vôtre.</li>
+      </ul>
+      <p class="monter"><b>Pour monter :</b> ce qui se répète devient un outil.</p>
+    </div>
+  </div>
+  <div class="marche">
+    <div class="chiffre">5</div>
+    <div>
+      <h3>Lui faire construire des outils</h3>
+      <ul>
+        <li>Décrire l’outil en mots, laisser l’IA écrire le programme, puis le tester.</li>
+        <li>L’IA écrit le programme une fois, et le programme fait toujours la même chose.</li>
+        <li>Garder un point de contrôle humain en tout temps.</li>
+      </ul>
+      <p class="monter"><b>À cette marche :</b> un script prévisible plutôt qu’un agent qui improvise.</p>
+    </div>
+  </div>
+</section>
+
+<section id="consignes">
+  <h2>Gabarit de consignes</h2>
+  <p class="intro">Adaptez le premier bloc à votre pratique, puis collez les deux blocs une seule fois. Les règles s’appliquent ensuite à chaque conversation.</p>
+  <h3>Où les coller</h3>
+  <ul>
+    <li>ChatGPT : Paramètres, Personnalisation, Instructions personnalisées.</li>
+    <li>Claude : Paramètres, dans le champ des préférences personnelles.</li>
+    <li>Gemini : créez un Gem et collez les règles dans ses instructions (voir plus bas).</li>
+  </ul>
+  <p class="note">Les noms de menus changent souvent d’une version à l’autre. Si vous ne les trouvez pas, cherchez « personnalisation » ou « instructions » dans les paramètres.</p>
+
+  <div class="outils no-print"><button type="button" data-copie="bloc1">Copier le bloc 1</button></div>
+  <div class="gabarit" id="bloc1">Je suis audioprothésiste au Québec. J’écris surtout des courriels à des patients, des notes au dossier et des rapports. Mes lecteurs sont des patients âgés et des collègues. Je veux des réponses que je peux vérifier, dans un français simple, écrit comme je l’écrirais moi-même.</div>
+
+  <div class="outils no-print"><button type="button" data-copie="bloc2">Copier le bloc 2</button></div>
+  <div class="gabarit" id="bloc2">COMMENT TRAVAILLER
+Si ma demande peut se comprendre de plusieurs façons, présente-les et demande-moi laquelle.
+Avant une réponse importante, pose-moi les questions dont tu as besoin.
+Si une information te manque, dis-le au lieu de l’inventer.
+Quand tu t’appuies sur une source, donne-moi le lien. Si tu ne peux pas la vérifier, dis-le.
+Réponds seulement à ce que je demande. Quand tu corriges mon texte, modifie uniquement la partie visée et montre-moi ce que tu as changé.
+
+COMMENT ÉCRIRE
+Écris en français du Québec, avec des mots ordinaires et des phrases simples.
+Pour une incise, utilise une virgule, des parenthèses ou un deux-points.
+Commence par l’information utile et termine sur un fait concret.
+Garde le gras pour un seul mot, au besoin.
+Imite le ton des textes que je te donne en exemple.
+
+AVANT DE ME RÉPONDRE
+Relis ton texte et retire : les tirets longs, « Excellente question », les suites de trois adjectifs, la phrase-choc en fin de paragraphe, les émojis.</div>
+  <p class="note">Collez les règles elles-mêmes. Demander à l’IA d’aller lire une page sur le sujet donne un résultat beaucoup moins fiable.</p>
+</section>
+
+<section id="projets">
+  <h2>Projets et Gems</h2>
+  <p class="intro">Un projet garde vos instructions et vos documents de référence au même endroit. Chaque nouvelle conversation dans ce projet part avec ce contexte, sans que vous ayez à le redonner.</p>
+  <div class="tableau">
+  <table>
+    <thead><tr><th>Outil</th><th>Où le trouver</th><th>Ce qu’on y met</th></tr></thead>
+    <tbody>
+      <tr><td>Claude</td><td>Projets, dans la barre de gauche, puis créer un projet</td><td>Instructions du projet et documents de référence</td></tr>
+      <tr><td>ChatGPT</td><td>Projets, dans la barre de gauche, puis nouveau projet</td><td>Instructions du projet et fichiers</td></tr>
+      <tr><td>Gemini</td><td>Gems, puis nouveau Gem</td><td>Instructions du Gem et fichiers de connaissances</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <h3>Un exemple pour commencer</h3>
+  <ol>
+    <li>Créez un projet « Code de déontologie ».</li>
+    <li>Déposez-y le code de déontologie et les lignes directrices qui vous concernent.</li>
+    <li>Écrivez dans les instructions : « Réponds seulement à partir de ces documents. Cite l’article. Si la réponse n’y est pas, dis-le. »</li>
+    <li>Posez votre question, puis ouvrez l’article cité pour le lire vous-même.</li>
+  </ol>
+  <p class="note">Aucun document de patient dans un projet d’un outil grand public, même avec un abonnement payant.</p>
+</section>
+
+<section id="patient">
+  <h2>Trois phrases pour votre patient</h2>
+  <p class="intro">Votre patient a souvent parlé à l’IA avant d’entrer dans votre bureau.</p>
+  <div class="cartes">
+    <div class="carte"><span class="num">1</span><p class="phrase">« C’est une bonne idée de vous être informé. Qu’est-ce que l’outil vous a dit? »</p></div>
+    <div class="carte"><span class="num">2</span><p class="phrase">« Montrez-moi ce que vous lui avez demandé. »</p></div>
+    <div class="carte"><span class="num">3</span><p class="phrase">« Voici ce que je vous recommande, et pourquoi. »</p></div>
+  </div>
+  <p class="note">On peut ajouter : « L’outil ne connaissait pas votre audiogramme ni l’état de vos oreilles. Regardons-les ensemble. »</p>
+  <h3>Votre plan</h3>
+  <p>Complétez la phrase et gardez-la à portée de main : « Si un patient me montre une réponse de ChatGPT, alors je… »</p>
+</section>
+
+<section id="fiche">
+  <h2>Fiche à remettre au patient</h2>
+  <p class="intro">Une page à imprimer et à remettre, ou à envoyer par courriel.</p>
+  <div class="outils no-print"><button type="button" id="imprimer">Imprimer la fiche</button></div>
+  <div class="feuille">
+    <h3>Vous avez posé une question à l’IA sur votre audition?</h3>
+    <p>C’est une bonne idée de vous informer. Apportez la réponse à votre rendez-vous, avec la question exacte que vous avez posée. On la regardera ensemble.</p>
+    <p><b>Ce que l’outil ne sait pas :</b> il n’a pas vu votre audiogramme, il n’a pas examiné vos oreilles et il ne connaît pas votre quotidien. Votre audioprothésiste, oui.</p>
+    <p><b>Pour obtenir une meilleure réponse :</b></p>
+    <ul>
+      <li>Demandez les causes possibles, plutôt que de lui dire ce que vous pensez déjà.</li>
+      <li>Demandez-lui ce qui lui manque pour bien vous répondre.</li>
+      <li>Demandez les sources, et ouvrez-les.</li>
+      <li>Un chiffre précis ou une étude citée peut être inventé. Vérifiez-le avant de vous y fier.</li>
+    </ul>
+    <p><b>Protégez vos renseignements :</b> n’écrivez pas votre nom, votre numéro d’assurance maladie ni vos résultats d’examens dans un outil d’IA.</p>
+    <p><b>Consultez un médecin sans attendre</b> si vous perdez l’audition soudainement, si vous avez de la douleur ou un écoulement à l’oreille, ou des étourdissements importants. Ne demandez pas à l’IA d’abord.</p>
+    <p>Mon audioprothésiste :</p>
+    <div class="ligne"></div>
+    <p>Téléphone :</p>
+    <div class="ligne"></div>
+  </div>
+</section>
+
+<section id="verification">
+  <h2>Vérifier une note avant de la signer</h2>
+  <p class="intro">Pour une note au dossier, un rapport ou un courriel préparé avec l’aide de l’IA.</p>
+  <ul class="verif">
+    <li>Aucun renseignement qui permet d’identifier le patient n’est entré dans un outil grand public.</li>
+    <li>Chaque seuil, chaque valeur et chaque date vient de mon dossier, pas de l’IA.</li>
+    <li>J’ai vérifié l’oreille droite et l’oreille gauche, et le degré de perte, contre l’audiogramme.</li>
+    <li>Ce qui n’a pas été mesuré est écrit comme non mesuré, sans être deviné.</li>
+    <li>Rien n’a été ajouté que je n’ai pas observé ou dit.</li>
+    <li>Chaque source citée : je l’ai ouverte, et la phrase y est.</li>
+    <li>La recommandation est la mienne, et je peux l’expliquer sans l’écran.</li>
+    <li>J’ai relu le texte en entier, et je le signerais comme si je l’avais écrit seul.</li>
+  </ul>
+</section>
+
+<section id="references">
+  <h2>Références</h2>
+  <p class="intro">Les études citées pendant la conférence. Chaque lien lance une recherche dans Google Scholar.</p>
+  <h3>Les pièges et les gestes</h3>
+  <ul class="refs" id="liste-pieges">
+    <li data-q="Reber Schwarz 1999 effects of perceptual fluency on judgments of truth">Reber et Schwarz, <i>Consciousness and Cognition</i>, 1999</li>
+    <li data-q="McGlone Tofighbakhsh 2000 birds of a feather flock conjointly rhyme">McGlone et Tofighbakhsh, <i>Psychological Science</i>, 2000</li>
+    <li data-q="Wineburg McGrew 2019 lateral reading fact checkers">Wineburg et McGrew, <i>Teachers College Record</i>, 2019</li>
+    <li data-q="Li 2026 AudiologyBench JMIR">Li et al., AudiologyBench, <i>Journal of Medical Internet Research</i>, 2026</li>
+    <li data-q="Nickerson 1998 confirmation bias ubiquitous phenomenon">Nickerson, <i>Review of General Psychology</i>, 1998</li>
+    <li data-q="Chen 2025 npj Digital Medicine sycophancy illogical medical requests">Chen et al., <i>npj Digital Medicine</i>, 2025</li>
+    <li data-q="Kim 2026 sycophancy clinical diagnosis I am a bit confused">Kim et al., ACL HeaLing, 2026</li>
+    <li data-q="Sharma 2024 towards understanding sycophancy in language models">Sharma et al., ICLR, 2024</li>
+    <li data-q="Lord Lepper Preston 1984 considering the opposite">Lord, Lepper et Preston, <i>Journal of Personality and Social Psychology</i>, 1984</li>
+    <li data-q="Kahneman 2011 Thinking Fast and Slow">Kahneman, <i>Thinking, Fast and Slow</i>, 2011</li>
+    <li data-q="Kalai 2025 why language models hallucinate">Kalai et al., OpenAI, 2025</li>
+    <li data-q="Omar 2025 Communications Medicine adversarial hallucination fabricated clinical details">Omar et al., <i>Communications Medicine</i>, 2025</li>
+    <li data-q="Omar 2026 npj Digital Medicine fabricated details mitigation prompt">Omar et al., <i>npj Digital Medicine</i>, 2026</li>
+    <li data-q="Wu 2026 Journal of Medical Systems audiogram large language model">Wu et al., <i>Journal of Medical Systems</i>, 2026</li>
+    <li data-q="Mosier Skitka 1996 human decision makers and automated decision aids">Mosier et Skitka, 1996</li>
+    <li data-q="Goddard Roudsari Wyatt 2012 automation bias systematic review">Goddard et al., <i>JAMIA</i>, 2012</li>
+    <li data-q="Dratsch 2023 automation bias mammography radiologists AI">Dratsch et al., <i>Radiology</i>, 2023</li>
+    <li data-q="Xu 2026 Nature Medicine human AI explanation physicians public">Xu et al., <i>Nature Medicine</i>, 2026</li>
+    <li data-q="Skitka Mosier Burdick 2000 accountability automation bias">Skitka, Mosier et Burdick, <i>International Journal of Human-Computer Studies</i>, 2000</li>
+    <li data-q="Bean 2026 Nature Medicine LLM medical assistance public randomized">Bean et al., <i>Nature Medicine</i>, 2026</li>
+    <li data-q="Fernandes 2026 Computers in Human Behavior AI metacognition overestimate performance">Fernandes et al., <i>Computers in Human Behavior</i>, 2026</li>
+  </ul>
+  <h3>Les audioprothésistes et les patients</h3>
+  <ul class="refs">
+    <li data-q="Ferland Guitton Sharp 2026 BMC Medical Education artificial intelligence hearing health professionals">Ferland, Guitton et Sharp, Université Laval, <i>BMC Medical Education</i>, 2026</li>
+    <li data-q="Ayo-Ajibola 2024 JMIR ChatGPT health information use">Ayo-Ajibola et al., <i>Journal of Medical Internet Research</i>, 2024</li>
+    <li>Association médicale canadienne et Abacus Data, sondage sur la santé et l’IA, 2026</li>
+    <li data-q="Rains 2013 the nature of psychological reactance revisited meta-analysis">Rains, <i>Human Communication Research</i>, 2013</li>
+    <li data-q="Rubak 2005 motivational interviewing systematic review British Journal of General Practice">Rubak et al., <i>British Journal of General Practice</i>, 2005</li>
+    <li data-q="Sheeran Listrom Gollwitzer 2025 implementation intentions meta-analysis">Sheeran, Listrom et Gollwitzer, 2025</li>
+    <li><a href="https://www.canlii.org/fr/#search/text=Moffatt%20Air%20Canada%202024%20BCCRT%20149" rel="noopener">Moffatt c. Air Canada, 2024 BCCRT 149</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>David Gélinas, audioprothésiste. Les propos de cette trousse sont tenus à titre personnel et n’engagent pas le conseil d’administration de l’Ordre des audioprothésistes du Québec.</p>
+    <p>Aucune affiliation commerciale avec les outils nommés.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.refs li[data-q]').forEach(function(li){
+  var a=document.createElement('a');
+  a.href='https://scholar.google.com/scholar?q='+encodeURIComponent(li.getAttribute('data-q'));
+  a.rel='noopener';
+  a.innerHTML=li.innerHTML;
+  li.innerHTML='';
+  li.appendChild(a);
+});
+document.querySelectorAll('button[data-copie]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=document.getElementById(b.getAttribute('data-copie')).innerText;
+    var fini=function(){var o=b.textContent;b.textContent='Copié';setTimeout(function(){b.textContent=o},1500)};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(fini,function(){})}
+  });
+});
+document.getElementById('imprimer').addEventListener('click',function(){
+  document.body.classList.add('imprime-fiche');
+  window.print();
+  setTimeout(function(){document.body.classList.remove('imprime-fiche')},500);
+});
+</script>
+</body>
+</html>
