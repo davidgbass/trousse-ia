@@ -111,18 +111,6 @@ nav a:hover,nav a.actif{background:var(--mint);color:var(--teal-deep)}
 .usage p{margin:2px 0 0;font-size:16px;color:var(--muted)}
 .historique{margin:14px 0 0;font-size:15px;color:var(--muted)}
 .geste-choisi .actions{margin-top:16px}
-.ma-phrase{background:var(--teal-deep);color:#FAF6EC;border-radius:22px;padding:20px 22px}
-.ma-phrase .surtitre{color:#E9B949;display:block}
-.ma-phrase textarea{width:100%;min-height:110px;background:#FFFDF7;color:#24302E;border:0;border-radius:14px;padding:12px 14px;font:italic 20px/28px var(--display);resize:none;overflow:hidden}
-.ma-phrase textarea:focus{outline:3px solid #E9B949;outline-offset:2px}
-.phrase-aide{margin:10px 0 0;font-size:15px;opacity:.85}
-.idees{margin-top:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:12px}
-.idees p{margin:0 0 8px;font-size:15px;opacity:.85}
-.idees button{display:block;width:100%;text-align:left;font:16px/1.4 var(--body);color:#FAF6EC;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:9px 12px;margin:0 0 8px;cursor:pointer}
-.idees button:hover{background:rgba(255,255,255,.16)}
-.idees button span{opacity:.7;font-size:14px;display:block}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ma-phrase{background:#0E1716;border:1px solid var(--line)}}
-:root[data-theme="dark"] .ma-phrase{background:#0E1716;border:1px solid var(--line)}
 
 /* Questionnaire */
 .carnet{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:22px clamp(18px,4vw,36px) 24px;margin-top:16px;animation:entre .35s ease both;max-width:760px}
@@ -256,20 +244,6 @@ footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);
       <div>
         <h3 class="etape-titre"><b>2</b>Votre prochain geste</h3>
         <div class="geste-choisi" id="geste-choisi"></div>
-      </div>
-      <div>
-      <h3 class="etape-titre"><b>3</b>Votre phrase, à lire à votre voisin</h3>
-      <div class="ma-phrase">
-        <label for="phrase" class="surtitre">Complétez la phrase</label>
-        <textarea id="phrase" rows="3"></textarea>
-        <p class="phrase-aide" id="phrase-etat">Elle reste dans votre téléphone.</p>
-        <div class="idees">
-          <p>Besoin d’une idée? Touchez-en une pour l’ajouter.</p>
-          <button type="button" data-idee="lui demande ce que l’IA lui a répondu, avec intérêt.">« Qu’est-ce que l’IA vous a répondu? »<span>Demander ce qu’elle a dit</span></button>
-          <button type="button" data-idee="lui dis qu’il a bien fait de chercher, et on regarde la réponse ensemble.">« Vous avez bien fait de chercher. »<span>Saluer la démarche</span></button>
-          <button type="button" data-idee="ajoute ce que l’IA ne pouvait pas savoir : son oreille, son audiogramme, son quotidien.">« L’IA n’a vu ni votre oreille ni votre audiogramme. »<span>Ajouter ce qui manque</span></button>
-        </div>
-      </div>
       </div>
     </div>
 
@@ -641,13 +615,10 @@ function calculer(r){
 function dateFr(iso){var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];var d=new Date(iso+'T12:00:00');return d.getDate()+(d.getDate()===1?'er':'')+' '+mois[d.getMonth()]+' '+d.getFullYear();}
 
 /* Mon parcours : un seul panneau pour le niveau, le geste et le plan */
-var panneau=document.getElementById('mon-geste'),champPhrase=document.getElementById('phrase');
-var DEBUT_PHRASE='Si un patient arrive avec un conseil de l’IA, alors je ';
-function ajuster(){champPhrase.style.height='auto';champPhrase.style.height=(champPhrase.scrollHeight+4)+'px';}
+var panneau=document.getElementById('mon-geste');
 function planTexte(n,p,r){
   var l=['Mon plan IA (trousse du Congrès 2026 des audioprothésistes du Québec)','','Mon niveau : '+n+', '+NIVEAUX[n],'Mon prochain geste : '+p.titre,p.texte];
   if(p.phrase)l.push('« '+p.phrase+' »');
-  var ph=lire().phrase;if(ph)l.push('','Ma phrase : '+ph);
   if(r&&r.usages&&r.usages.length){l.push('');r.usages.forEach(function(u){if(USAGES[u])l.push('- '+USAGES[u][0]+' : '+USAGES[u][1]);});}
   l.push('','https://davidgbass.github.io/trousse-ia/');
   return l.join('\n');
@@ -674,8 +645,6 @@ function rendre(){
   h+='<div class="actions"><button type="button" class="btn clair" data-ouvre-quiz>'+(r?'Refaire le questionnaire':'Affiner mon niveau (2 minutes)')+'</button>'+(r?'<button type="button" class="btn" id="copier-plan">Copier mon plan</button>':'')+'</div>';
   document.getElementById('geste-choisi').innerHTML=h;
   panneau.hidden=false;
-  if(!champPhrase.value)champPhrase.value=etat.phrase||DEBUT_PHRASE;
-  setTimeout(ajuster,0);
   var bp=document.getElementById('copier-plan');
   if(bp)bp.addEventListener('click',function(){copier(planTexte(n,p,r),bp);});
   lierQuiz(document.getElementById('geste-choisi'));
@@ -684,24 +653,10 @@ function placer(n){
   var etat=lire();etat.place=n;ecrire(etat);
   fermerQuiz();rendre();
   panneau.scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(function(){if(champPhrase.value===DEBUT_PHRASE){champPhrase.focus();champPhrase.setSelectionRange(champPhrase.value.length,champPhrase.value.length);}},500);
 }
 document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){
   b.addEventListener('click',function(){placer(+b.getAttribute('data-n'));});
 });
-var minuterie;
-function sauverPhrase(){var etat=lire();etat.phrase=champPhrase.value;ecrire(etat);
-  document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone.';}
-champPhrase.addEventListener('input',function(){ajuster();clearTimeout(minuterie);minuterie=setTimeout(sauverPhrase,400);});
-document.querySelectorAll('[data-idee]').forEach(function(b){
-  b.addEventListener('click',function(){
-    var v=champPhrase.value.replace(/\s+$/,''),ajout=b.getAttribute('data-idee');
-    if(v===''||v===DEBUT_PHRASE.trim()||/alors je$/.test(v))champPhrase.value=(v===''?DEBUT_PHRASE.trim():v)+' '+ajout;
-    else champPhrase.value=v+(/[.!?]$/.test(v)?' Puis je ':'. Puis je ')+ajout;
-    ajuster();sauverPhrase();
-  });
-});
-
 /* Questionnaire, dans le parcours */
 var quiz=document.getElementById('quiz'),form=document.getElementById('questionnaire');
 var etapes=[].slice.call(form.querySelectorAll('.etape'));
@@ -744,7 +699,6 @@ function terminer(){
   var etat=lire(),r=etat.reponses;
   if(r){if(r.usage==='3')r.usage='2';CHAMPS.forEach(function(k){if(r[k]!==null&&r[k]!==undefined)cocher(k,r[k]);});(r.usages||[]).forEach(function(u){cocher('usages',u);});
     if(typeof etat.place!=='number'&&complet(r)){etat.place=calculer(r).niveau;etat.quizNiveau=etat.place;ecrire(etat);}}
-  champPhrase.value=etat.phrase||'';
   rendre();
 })();
 
