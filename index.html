@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Trousse IA</title>
-<meta name="description" content="Trousse de la conférence « L’IA, nouvel acteur de l’équipe », Congrès 2026 des audioprothésistes du Québec : trouvez votre niveau, testez votre demande, et repartez avec le prochain geste.">
+<meta name="description" content="Trousse de la conférence « L’IA, nouvel acteur de l’équipe », Congrès 2026 des audioprothésistes du Québec : placez-vous sur l’escalier, repartez avec votre geste et votre phrase.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
@@ -25,6 +25,7 @@
   --on-teal:#10201E;--shadow:0 1px 0 rgba(0,0,0,.3),0 12px 30px -18px rgba(0,0,0,.8);color-scheme:dark}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.6 var(--body);position:relative}
@@ -34,182 +35,36 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opa
 :root[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.12}
 main,header,footer,nav{position:relative;z-index:1}
 .wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
-.etroit{max-width:760px}
 a{color:var(--teal)}
 img{max-width:100%;height:auto;display:block}
 h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.01em;text-wrap:balance;margin:0}
 h2{font-size:clamp(28px,4.2vw,40px);line-height:1.1}
 h3{font-size:22px;line-height:1.2}
 .surtitre{font:700 13px/1.2 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0 0 10px}
-.chapeau{color:var(--muted);font-size:19px;max-width:62ch;margin:10px 0 26px}
-section{padding-block:56px 16px;scroll-margin-top:64px}
-.prive{display:inline-flex;gap:8px;align-items:center;font-size:15px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin:0}
-
-header{padding-block:28px 10px}
-.hero{display:grid;gap:28px;align-items:center}
-@media (min-width:860px){.hero{grid-template-columns:1.05fr 1fr;gap:40px}}
-.hero h1{font-size:clamp(40px,7vw,68px);line-height:.98;font-weight:700}
-.hero h1 em{font-style:italic;font-weight:400;color:var(--teal)}
-.hero .sous{font-size:21px;color:var(--muted);margin:16px 0 4px;max-width:34ch}
-.hero .auteur{font-size:15px;color:var(--muted);margin:0 0 22px}
-.hero figure{margin:0;position:relative}
-.hero figure img{border-radius:22px;box-shadow:var(--shadow);border:1px solid var(--line)}
-.hero figure figcaption{position:absolute;left:14px;bottom:12px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:14px;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-flex;align-items:center;gap:8px;font:700 17px/1 var(--body);text-decoration:none;cursor:pointer;border-radius:14px;padding:15px 20px;border:2px solid var(--teal);background:var(--teal);color:var(--on-teal);transition:transform .15s ease,box-shadow .15s ease}
+.chapeau{color:var(--muted);font-size:19px;max-width:62ch;margin:10px 0 24px}
+section{padding-block:48px 8px;scroll-margin-top:60px}
+button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 16px/1 var(--body);text-decoration:none;cursor:pointer;border-radius:12px;padding:12px 16px;border:2px solid var(--teal);background:var(--teal);color:var(--on-teal);transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
 .btn.clair{background:transparent;color:var(--teal)}
-.btn.petit{font-size:15px;padding:10px 14px;border-radius:11px}
-button:focus-visible,a:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--ochre);outline-offset:3px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
 .apparait{animation:monte .7s cubic-bezier(.2,.7,.2,1) both}
-.apparait:nth-child(2){animation-delay:.08s}.apparait:nth-child(3){animation-delay:.16s}.apparait:nth-child(4){animation-delay:.24s}.apparait:nth-child(5){animation-delay:.32s}
+.apparait:nth-child(2){animation-delay:.08s}.apparait:nth-child(3){animation-delay:.16s}
 @keyframes monte{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes entre{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
-nav a{flex:0 0 auto;font-size:15px;font-weight:700;color:var(--muted);text-decoration:none;border-radius:999px;padding:7px 13px}
-nav a:hover,nav a.actif{background:var(--mint);color:var(--teal-deep)}
-
-.carnet{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:24px clamp(18px,4vw,36px) 28px;position:relative;overflow:hidden;margin-top:20px}
-.carnet::after{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:repeating-linear-gradient(var(--teal) 0 18px,transparent 18px 26px);opacity:.25}
-.progres{display:flex;align-items:center;gap:12px;margin-bottom:18px;font-size:15px;color:var(--muted)}
-.barre{flex:1;height:8px;border-radius:99px;background:var(--paper2);overflow:hidden}
-.barre i{display:block;height:100%;width:0;background:var(--teal);border-radius:99px;transition:width .35s ease}
-.etape{border:0;padding:0;margin:0;display:none;min-width:0}
-.etape.active{display:block;animation:entre .35s ease both}
-@keyframes entre{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-.etape legend{font-family:var(--display);font-size:clamp(23px,3.4vw,30px);font-weight:600;line-height:1.2;padding:0;margin-bottom:6px}
-.etape .aide{color:var(--muted);margin:0 0 14px;font-size:16px}
-.tuiles{display:grid;gap:10px;margin-top:14px}
-.tuiles label{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:15px 16px;cursor:pointer;background:var(--paper);font-size:18px;transition:border-color .15s,background .15s,transform .1s}
-.tuiles label:hover{border-color:var(--teal)}
-.tuiles label:active{transform:scale(.99)}
-.tuiles input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:24px;height:24px;border:2px solid var(--muted);border-radius:50%;display:grid;place-content:center;margin:0;background:var(--card)}
-.tuiles input[type=checkbox]{border-radius:7px}
-.tuiles input::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--on-teal);transform:scale(0);transition:transform .12s}
-.tuiles input[type=checkbox]::before{border-radius:2px;clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);width:13px;height:13px}
-.tuiles input:checked{background:var(--teal);border-color:var(--teal)}
-.tuiles input:checked::before{transform:scale(1)}
-.tuiles label:has(input:checked){border-color:var(--teal);background:var(--mint)}
-.pied-q{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px;min-height:46px}
-.lien{background:none;border:0;color:var(--teal);font:700 16px var(--body);cursor:pointer;padding:8px 0}
-
-#resultat{animation:entre .45s ease both}
-.verdict{display:grid;gap:22px;align-items:center}
-@media (min-width:760px){.verdict{grid-template-columns:220px 1fr}}
-.verdict img{border-radius:20px;border:1px solid var(--line);width:100%;max-width:220px}
-.gros{font-family:var(--display);font-weight:700;font-size:clamp(54px,9vw,84px);line-height:.9;color:var(--teal);margin:0}
-.gros small{font-size:.32em;font-weight:600;color:var(--ink);display:block;letter-spacing:0;margin-top:8px}
-.escalier{display:flex;align-items:flex-end;gap:6px;height:76px;margin:16px 0 4px;max-width:340px}
-.escalier span{flex:1;border-radius:7px 7px 2px 2px;background:var(--paper2);border:1px solid var(--line);display:flex;justify-content:center;padding-top:4px;font-weight:700;font-size:13px;color:var(--muted);height:0;transition:height .6s cubic-bezier(.2,.8,.2,1)}
-.escalier span.fait{background:var(--mint);color:var(--teal-deep);border-color:transparent}
-.escalier span.ici{background:var(--teal);color:var(--on-teal);border-color:transparent}
-.geste{margin:22px 0 0;border-radius:18px;padding:18px 20px;background:var(--paper);border:1px dashed var(--teal)}
-.geste .etiq{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
-.geste h3{margin:6px 0 6px}
-.geste p{margin:6px 0}
-.dire{font-family:var(--display);font-style:italic;font-size:20px;line-height:1.4;background:var(--card);border-left:4px solid var(--ochre);border-radius:4px 12px 12px 4px;padding:12px 16px;margin:10px 0 0}
-.alerte{border-radius:14px;padding:13px 16px;margin:14px 0 0;font-size:16px}
-.alerte.rouge{background:var(--brick-soft);color:var(--brick)}
-.alerte.jaune{background:var(--ochre-soft);color:var(--ink)}
-.usages{margin-top:22px;display:grid;gap:10px}
-@media (min-width:760px){.usages{grid-template-columns:1fr 1fr}}
-.usage{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card)}
-.usage b{display:block;font-family:var(--display);font-size:18px;margin-bottom:3px}
-.usage p{margin:0;font-size:16px;color:var(--muted)}
-.historique{margin:18px 0 0;font-size:16px;color:var(--muted)}
-.historique b{color:var(--ink)}
-
-.testeur{display:grid;gap:18px}
-@media (min-width:860px){.testeur{grid-template-columns:1.1fr 1fr;align-items:start}}
-.testeur>div{min-width:0}
-textarea{width:100%;min-height:210px;font:18px/28px var(--body);color:var(--ink);background-color:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;resize:vertical;
-  background-image:repeating-linear-gradient(transparent 0 27px,color-mix(in srgb,var(--line) 70%,transparent) 27px 28px);background-attachment:local;background-position:0 14px}
-textarea:focus{border-color:var(--teal);outline:none}
-.verdict-test{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
-.compteur{display:flex;gap:6px;margin:8px 0 12px}
-.compteur i{flex:1;height:10px;border-radius:99px;background:var(--paper2)}
-.compteur i.on{background:var(--teal)}
-.manque{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:start;border-top:1px solid var(--line);padding:12px 0}
-.manque .pt{width:26px;height:26px;border-radius:50%;display:grid;place-content:center;font-weight:700;background:var(--ochre-soft);color:var(--ink)}
-.manque .pt.r{background:var(--brick-soft);color:var(--brick)}
-.manque p{margin:0 0 6px;font-size:16px}
-
-.pieges{display:grid;gap:18px}
-@media (min-width:760px){.pieges{grid-template-columns:1fr 1fr}}
-.piege{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.piege img{aspect-ratio:16/9;object-fit:cover;width:100%;border-bottom:1px solid var(--line)}
-.piege .corps{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-.piege .nom{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
-.avant,.apres{border-radius:12px;padding:10px 13px;font-size:16px}
-.avant{background:var(--paper2);color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--brick) 60%,transparent)}
-.apres{background:var(--mint);color:var(--ink);font-weight:700}
-.apres::before{content:"Je fais · ";font-weight:400;color:var(--teal)}
-.piege .pq{font-size:15px;color:var(--muted);margin:0}
-
-.niveaux{display:grid;gap:16px}
-.niv{display:grid;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;align-items:center}
-@media (min-width:760px){.niv{grid-template-columns:190px 1fr}}
-.niv>div{min-width:0}
-.niv img{border-radius:16px;width:100%;max-width:190px;border:1px solid var(--line)}
-.niv .no{font-family:var(--display);font-weight:700;font-size:15px;color:var(--teal);letter-spacing:.04em}
-.niv h3{font-size:24px;margin:2px 0 8px}
-.niv ul{margin:0;padding-left:20px}
-.niv li{margin:4px 0;font-size:17px}
-.monter{margin:12px 0 0;font-size:16px;background:var(--ochre-soft);border-radius:10px;padding:8px 12px;display:inline-block}
-.mini{font-size:15px;color:var(--muted);margin:10px 0 0}
-.tableau{overflow-x:auto;margin-top:10px}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;vertical-align:top;border-top:1px solid var(--line);padding:8px}
-th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-
-.demo{background:#1E3D3A;color:#FAF6EC;border-radius:26px;padding:clamp(22px,4vw,40px);position:relative;overflow:hidden}
-.demo .surtitre{color:#E9B949}
-.demo .q{font-family:var(--display);font-style:italic;font-size:19px;opacity:.9;max-width:60ch;margin:12px 0 24px}
-.barres{display:grid;gap:12px}
-.barres .l{display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:center}
-.barres .l b{font-family:var(--display);font-size:16px;opacity:.85}
-.barres .t{position:relative;height:46px;border-radius:12px;background:rgba(255,255,255,.08);overflow:hidden}
-.barres .t i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,rgba(233,185,73,.5),rgba(233,185,73,.95));border-radius:12px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
-.barres .t span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;z-index:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100% - 84px)}
-.barres .t em{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-style:normal;font-family:var(--display);font-weight:700;font-size:20px;z-index:1}
-.barres .l b small{display:none;font-family:var(--body);font-weight:400;font-size:14px;opacity:.85;margin-left:6px}
-@media (max-width:560px){.barres .l{grid-template-columns:1fr;gap:4px}.barres .t span{display:none}.barres .l b small{display:inline}.barres .t{height:34px}}
-.demo .chute{margin:22px 0 0;font-size:17px;border-top:1px solid rgba(255,255,255,.18);padding-top:16px}
-.demo .chute b{color:#E9B949}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .demo{background:#0E1716;border:1px solid var(--line)}}
-:root[data-theme="dark"] .demo{background:#0E1716;border:1px solid var(--line)}
-
-.bulles{display:grid;gap:16px}
-@media (min-width:860px){.bulles{grid-template-columns:repeat(3,1fr)}}
-.bulle .dit{background:var(--card);border:1px solid var(--line);border-radius:22px 22px 22px 6px;padding:20px;font-family:var(--display);font-size:21px;line-height:1.35;box-shadow:var(--shadow)}
-.bulle .n{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:14px 0 4px 6px}
-.bulle p{margin:0 6px;font-size:16px;color:var(--muted)}
-
-.plis{display:grid;gap:12px;margin-top:22px}
-details{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
-summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--display);font-size:21px;font-weight:600}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--body);font-size:26px;color:var(--teal);transition:transform .2s}
-details[open] summary::after{transform:rotate(45deg)}
-summary small{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--muted);margin-top:2px}
-.pli{padding:0 20px 20px}
-.gabarit{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0;white-space:pre-wrap;font:15px/1.55 ui-monospace,Menlo,Consolas,monospace;overflow-wrap:anywhere}
-.coches{padding-left:0}
-.coches li{list-style:none;position:relative;padding-left:32px;margin:10px 0}
-.coches li::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border:2px solid var(--teal);border-radius:5px}
-.refs{padding-left:18px}
-.refs li{font-size:15px;margin:5px 0}
-
-footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
-@media print{body::before,nav,header .actions,.no-print{display:none!important}body{background:#fff}}
-
-/* Accueil : l’escalier */
-header{padding-block:28px 0}
+/* En-tête et navigation */
+header{padding-block:26px 0}
 header h1{font-size:clamp(34px,6vw,58px);line-height:1;font-weight:700}
 header h1 em{font-style:italic;font-weight:400;color:var(--teal)}
 header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
-.escalier-accueil{padding-block:22px 10px}
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:18px}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:9px;scrollbar-width:none}
+nav a{flex:0 0 auto;font-size:15px;font-weight:700;color:var(--muted);text-decoration:none;border-radius:999px;padding:7px 14px}
+nav a:hover,nav a.actif{background:var(--mint);color:var(--teal-deep)}
+
+/* Mon parcours : l’escalier */
+#parcours{padding-top:20px}
 .scene{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}
 .scene-tete{padding:20px clamp(18px,4vw,30px) 0}
 .scene-tete h2{font-size:clamp(26px,4vw,36px)}
@@ -224,26 +79,127 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
 .marche-btn:hover{transform:translate(-50%,-50%) scale(1.1)}
 .marche-btn.ici{background:var(--ochre);color:#24302E;transform:translate(-50%,-50%) scale(1.15)}
 .marche-btn.ici::before{content:"Vous êtes ici";position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;font:700 13px var(--body);background:var(--ink);color:var(--paper);padding:4px 9px;border-radius:999px}
-.puces-niveaux{display:flex;flex-wrap:wrap;gap:8px;padding:14px clamp(14px,3vw,24px) 20px;border-top:1px solid var(--line)}
+.puces-niveaux{display:flex;flex-wrap:wrap;gap:8px;padding:14px clamp(14px,3vw,24px) 6px;border-top:1px solid var(--line)}
 .puces-niveaux button{display:inline-flex;align-items:center;gap:8px;font:16px var(--body);color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:7px 14px 7px 7px;cursor:pointer}
 .puces-niveaux button b{width:26px;height:26px;border-radius:50%;display:grid;place-content:center;background:var(--mint);color:var(--teal-deep);font-family:var(--display)}
 .puces-niveaux button:hover{border-color:var(--teal)}
 .puces-niveaux button.ici{border-color:var(--teal);background:var(--mint)}
 .puces-niveaux button.ici b{background:var(--ochre);color:#24302E}
+.pas-certain{margin:0;padding:6px clamp(14px,3vw,24px) 18px;font-size:16px;color:var(--muted)}
+.lien{background:none;border:0;color:var(--teal);font:700 16px var(--body);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:560px){.marche-btn{width:38px;height:38px;font-size:16px}.marche-btn.ici::before{font-size:11px}}
+
+/* Mon geste et ma phrase */
 .mon-geste{margin-top:16px;display:grid;gap:14px;animation:entre .4s ease both}
-@media (min-width:860px){.mon-geste{grid-template-columns:1.05fr 1fr;align-items:start}}
+@media (min-width:860px){.mon-geste{grid-template-columns:1.1fr 1fr;align-items:start}}
 .geste-choisi{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:var(--shadow)}
-.geste-choisi .niv-titre{font-family:var(--display);font-size:24px;font-weight:600;margin:4px 0 10px}
+.geste-choisi .niv-titre{font-family:var(--display);font-size:24px;font-weight:600;margin:4px 0 10px;line-height:1.2}
 .geste-choisi p{margin:6px 0}
+.dire{font-family:var(--display);font-style:italic;font-size:20px;line-height:1.4;background:var(--paper);border-left:4px solid var(--ochre);border-radius:4px 12px 12px 4px;padding:12px 16px;margin:10px 0 0}
+.source-geste{font-size:14px;color:var(--muted);margin:10px 0 0!important}
+.alerte{border-radius:14px;padding:12px 15px;margin:14px 0 0;font-size:16px}
+.alerte.rouge{background:var(--brick-soft);color:var(--brick)}
+.alerte.jaune{background:var(--ochre-soft);color:var(--ink)}
+.usages{margin-top:16px;border-top:1px solid var(--line);padding-top:12px;display:grid;gap:10px}
+.usage b{display:block;font-size:16px}
+.usage p{margin:2px 0 0;font-size:16px;color:var(--muted)}
+.historique{margin:14px 0 0;font-size:15px;color:var(--muted)}
+.geste-choisi .actions{margin-top:16px}
 .ma-phrase{background:var(--teal-deep);color:#FAF6EC;border-radius:22px;padding:20px 22px}
 .ma-phrase .surtitre{color:#E9B949;display:block}
-.ma-phrase textarea{min-height:110px;background:#FFFDF7;color:#24302E;border-color:transparent;font-family:var(--display);font-size:20px;line-height:28px;font-style:italic;background-image:none}
+.ma-phrase textarea{width:100%;min-height:110px;background:#FFFDF7;color:#24302E;border:0;border-radius:14px;padding:12px 14px;font:italic 20px/28px var(--display);resize:none;overflow:hidden}
+.ma-phrase textarea:focus{outline:3px solid #E9B949;outline-offset:2px}
 .phrase-aide{margin:10px 0 0;font-size:15px;opacity:.85}
+.idees{margin-top:14px;border-top:1px solid rgba(255,255,255,.18);padding-top:12px}
+.idees p{margin:0 0 8px;font-size:15px;opacity:.85}
+.idees button{display:block;width:100%;text-align:left;font:16px/1.4 var(--body);color:#FAF6EC;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:9px 12px;margin:0 0 8px;cursor:pointer}
+.idees button:hover{background:rgba(255,255,255,.16)}
+.idees button span{opacity:.7;font-size:14px;display:block}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ma-phrase{background:#0E1716;border:1px solid var(--line)}}
 :root[data-theme="dark"] .ma-phrase{background:#0E1716;border:1px solid var(--line)}
-.affiner{grid-column:1/-1;margin:0;font-weight:700}
-.affiner a{text-decoration:none}
-@media (max-width:560px){.marche-btn{width:38px;height:38px;font-size:16px}.marche-btn.ici::before{font-size:11px}}
+
+/* Questionnaire */
+.carnet{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:22px clamp(18px,4vw,36px) 24px;margin-top:16px;animation:entre .35s ease both;max-width:760px}
+.progres{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:15px;color:var(--muted)}
+.barre{flex:1;height:8px;border-radius:99px;background:var(--paper2);overflow:hidden}
+.barre i{display:block;height:100%;width:0;background:var(--teal);border-radius:99px;transition:width .35s ease}
+.fermer{margin-left:auto}
+.etape{border:0;padding:0;margin:0;display:none;min-width:0}
+.etape.active{display:block;animation:entre .3s ease both}
+.etape legend{font-family:var(--display);font-size:clamp(22px,3.2vw,28px);font-weight:600;line-height:1.2;padding:0;margin-bottom:6px}
+.etape .aide{color:var(--muted);margin:0 0 12px;font-size:16px}
+.tuiles{display:grid;gap:10px;margin-top:12px}
+.tuiles label{display:flex;gap:14px;align-items:center;border:2px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;background:var(--paper);font-size:18px;transition:border-color .15s,background .15s}
+.tuiles label:hover{border-color:var(--teal)}
+.tuiles input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:24px;height:24px;border:2px solid var(--muted);border-radius:50%;display:grid;place-content:center;margin:0;background:var(--card)}
+.tuiles input[type=checkbox]{border-radius:7px}
+.tuiles input::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--on-teal);transform:scale(0);transition:transform .12s}
+.tuiles input[type=checkbox]::before{border-radius:2px;clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);width:13px;height:13px}
+.tuiles input:checked{background:var(--teal);border-color:var(--teal)}
+.tuiles input:checked::before{transform:scale(1)}
+.tuiles label:has(input:checked){border-color:var(--teal);background:var(--mint)}
+.pied-q{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:18px;min-height:44px}
+
+/* Mes outils */
+.testeur{display:grid;gap:18px}
+@media (min-width:860px){.testeur{grid-template-columns:1.1fr 1fr;align-items:start}}
+.testeur>div{min-width:0}
+.testeur textarea{width:100%;min-height:200px;font:18px/28px var(--body);color:var(--ink);background-color:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;resize:vertical;
+  background-image:repeating-linear-gradient(transparent 0 27px,color-mix(in srgb,var(--line) 70%,transparent) 27px 28px);background-attachment:local;background-position:0 14px}
+.testeur textarea:focus{border-color:var(--teal);outline:none}
+.verdict-test{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.compteur{display:flex;gap:6px;margin:8px 0 12px}
+.compteur i{flex:1;height:10px;border-radius:99px;background:var(--paper2)}
+.compteur i.on{background:var(--teal)}
+.manque{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:start;border-top:1px solid var(--line);padding:12px 0}
+.manque .pt{width:26px;height:26px;border-radius:50%;display:grid;place-content:center;font-weight:700;background:var(--ochre-soft);color:var(--ink)}
+.manque .pt.r{background:var(--brick-soft);color:var(--brick)}
+.manque p{margin:0 0 6px;font-size:16px}
+.manque .pq{color:var(--muted);font-size:14px}
+.plis{display:grid;gap:12px;margin-top:22px}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--display);font-size:20px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--body);font-size:26px;color:var(--teal);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+summary small{display:block;font-family:var(--body);font-weight:400;font-size:15px;color:var(--muted);margin-top:2px}
+.pli{padding:0 20px 20px}
+.gabarit{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0;white-space:pre-wrap;font:15px/1.55 ui-monospace,Menlo,Consolas,monospace;overflow-wrap:anywhere}
+.coches{padding-left:0}
+.coches li{list-style:none;position:relative;padding-left:32px;margin:10px 0}
+.coches li::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border:2px solid var(--teal);border-radius:5px}
+.tableau{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;vertical-align:top;border-top:1px solid var(--line);padding:8px}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* Revoir la conférence */
+.pieges{display:grid;gap:18px}
+@media (min-width:760px){.pieges{grid-template-columns:1fr 1fr}}
+.piege{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.piege img{aspect-ratio:16/9;object-fit:cover;width:100%;border-bottom:1px solid var(--line)}
+.piege .corps{padding:16px 20px 18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.piege .nom{font:700 12px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.avant,.apres{border-radius:12px;padding:9px 12px;font-size:16px}
+.avant{background:var(--paper2);color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--brick) 60%,transparent)}
+.apres{background:var(--mint);color:var(--ink);font-weight:700}
+.apres::before{content:"Je fais · ";font-weight:400;color:var(--teal)}
+.piege .pq{font-size:15px;color:var(--muted);margin:0}
+.niveaux-liste{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.niveaux-liste .q{margin:0;padding:16px 20px;font-family:var(--display);font-style:italic;font-size:17px;color:var(--muted);border-bottom:1px solid var(--line)}
+.nl{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:start;padding:16px 20px;border-bottom:1px solid var(--line)}
+.nl:last-child{border-bottom:0}
+.nl .no{width:40px;height:40px;border-radius:50%;display:grid;place-content:center;background:var(--mint);color:var(--teal-deep);font:700 18px var(--display)}
+.nl h3{font-size:20px;margin:6px 0 4px}
+.nl p{margin:0;font-size:16px;color:var(--muted)}
+.nl .score{font:700 22px var(--display);color:var(--teal);white-space:nowrap;padding-top:6px}
+.nl .score small{display:block;font:400 12px var(--body);color:var(--muted);text-align:right}
+.note-demo{font-size:15px;color:var(--muted);margin:10px 4px 0}
+.refs{padding-left:18px}
+.refs li{font-size:15px;margin:5px 0}
+
+footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+@media print{body::before,nav,.no-print{display:none!important}body{background:#fff}}
 </style>
 </head>
 <body>
@@ -256,7 +212,17 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
   </div>
 </header>
 
-<section id="escalier" class="escalier-accueil">
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#parcours">Mon parcours</a>
+    <a href="#outils">Outils</a>
+    <a href="#conference">La conférence</a>
+  </div>
+</nav>
+
+<main>
+
+<section id="parcours">
   <div class="wrap">
     <div class="scene apparait">
       <div class="scene-tete">
@@ -278,6 +244,7 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
         <button type="button" data-n="3"><b>3</b>Je demande un deuxième avis</button>
         <button type="button" data-n="4"><b>4</b>Je construis mes outils</button>
       </div>
+      <p class="pas-certain">Pas certain? <button type="button" class="lien" data-ouvre-quiz>Répondez à huit questions</button> et la page vous place.</p>
     </div>
 
     <div id="mon-geste" class="mon-geste" hidden aria-live="polite">
@@ -285,37 +252,19 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
       <div class="ma-phrase">
         <label for="phrase" class="surtitre">Votre phrase</label>
         <textarea id="phrase" rows="3"></textarea>
-        <p class="phrase-aide"><span id="phrase-etat">Lisez-la à votre voisin. Elle reste dans votre téléphone.</span></p>
+        <p class="phrase-aide" id="phrase-etat">Complétez-la, puis lisez-la à votre voisin. Elle reste dans votre téléphone.</p>
+        <div class="idees">
+          <p>Besoin d’une idée? Touchez-en une pour l’ajouter.</p>
+          <button type="button" data-idee="lui demande ce que l’IA lui a répondu, avec intérêt.">« Qu’est-ce que l’IA vous a répondu? »<span>Demander ce qu’elle a dit</span></button>
+          <button type="button" data-idee="lui dis qu’il a bien fait de chercher, et on regarde la réponse ensemble.">« Vous avez bien fait de chercher. »<span>Saluer la démarche</span></button>
+          <button type="button" data-idee="ajoute ce que l’IA ne pouvait pas savoir : son oreille, son audiogramme, son quotidien.">« L’IA n’a vu ni votre oreille ni votre audiogramme. »<span>Ajouter ce qui manque</span></button>
+        </div>
       </div>
-      <p class="affiner"><a href="#niveau">Affiner mon niveau en 2 minutes ↓</a></p>
     </div>
-  </div>
-</section>
 
-<nav aria-label="Sections">
-  <div class="wrap">
-    <a href="#niveau">Mon niveau</a>
-    <a href="#tester">Tester ma demande</a>
-    <a href="#gestes">Les gestes</a>
-    <a href="#niveaux">Les niveaux</a>
-    <a href="#demo">La démonstration</a>
-    <a href="#patient">Le patient</a>
-    <a href="#outils">Gabarits et références</a>
-  </div>
-</nav>
-
-<main>
-
-<section id="niveau">
-  <div class="wrap etroit">
-    <p class="surtitre">Deux minutes</p>
-    <h2>Affinez votre niveau</h2>
-    <p class="chapeau">Huit questions, une à la fois, pour un niveau plus juste que l’escalier et un geste adapté à vos usages.</p>
-    <p class="prive">Vos réponses restent dans cet appareil. Rien n’est envoyé.</p>
-
-    <div class="carnet">
+    <div id="quiz" class="carnet" hidden>
       <form id="questionnaire" novalidate>
-        <div class="progres"><span id="compte">1 sur 8</span><div class="barre"><i id="barre"></i></div></div>
+        <div class="progres"><span id="compte">1 sur 8</span><div class="barre"><i id="barre"></i></div><button type="button" class="lien fermer" id="fermer-quiz">Fermer</button></div>
 
         <fieldset class="etape" data-nom="usage">
           <legend>Utilisez-vous une IA comme ChatGPT, Claude, Gemini ou Copilot?</legend>
@@ -325,7 +274,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="usage" value="2">Souvent</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="entrainement">
           <legend>Avez-vous fermé l’option qui sert à entraîner le modèle avec vos conversations?</legend>
           <div class="tuiles">
@@ -334,7 +282,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="entrainement" value="nsp">Je ne sais pas</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="usages" data-multiple>
           <legend>Pour quoi l’utilisez-vous, ou voudriez-vous l’utiliser?</legend>
           <p class="aide">Cochez tout ce qui s’applique, puis continuez.</p>
@@ -346,7 +293,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="checkbox" name="usages" value="patient">Expliquer quelque chose à un patient</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="contexte">
           <legend>Quand vous lui posez une question, lui donnez-vous du contexte?</legend>
           <p class="aide">Qui vous êtes, la situation, ce que vous voulez en faire.</p>
@@ -356,7 +302,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="contexte" value="2">Presque toujours</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="documents">
           <legend>Lui donnez-vous vos propres documents, comme un guide ou une norme?</legend>
           <div class="tuiles">
@@ -365,7 +310,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="documents" value="2">Oui, et je retrouve dans le document la phrase qu’elle cite</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="avis">
           <legend>Pour une réponse importante, demandez-vous un deuxième avis à une autre IA?</legend>
           <div class="tuiles">
@@ -374,7 +318,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="avis" value="2">Oui, et quand elles divergent, je tranche à la source</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="outil">
           <legend>Avez-vous déjà fait construire un petit outil par l’IA?</legend>
           <p class="aide">Un calculateur, une page web, un script qui fait une tâche à votre place.</p>
@@ -384,7 +327,6 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="outil" value="2">Oui, et je le teste avant de m’y fier</label>
           </div>
         </fieldset>
-
         <fieldset class="etape" data-nom="patients">
           <legend>Y entrez-vous des renseignements sur vos patients?</legend>
           <div class="tuiles">
@@ -393,41 +335,112 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
             <label><input type="radio" name="patients" value="oui">Oui</label>
           </div>
         </fieldset>
-
         <div class="pied-q">
           <button type="button" class="lien" id="retour">← Retour</button>
-          <button type="button" class="btn petit" id="continuer">Continuer</button>
+          <button type="button" class="btn" id="continuer">Continuer</button>
         </div>
       </form>
-      <div id="resultat" hidden aria-live="polite"></div>
     </div>
   </div>
 </section>
 
-<section id="tester">
+<section id="outils">
   <div class="wrap">
-    <p class="surtitre">Avant d’envoyer</p>
-    <h2>Testez votre demande</h2>
+    <p class="surtitre">Mes outils</p>
+    <h2>Testez votre prochaine demande</h2>
     <p class="chapeau">Collez la demande que vous allez envoyer. La page repère les gestes qui manquent et ajoute la phrase pour vous.</p>
     <div class="testeur">
       <div>
         <textarea id="demande" aria-label="Votre demande" placeholder="Exemple : Un patient se présente avec un appareil auditif en vente libre acheté aux États-Unis. Mon assistante peut-elle s’en occuper?"></textarea>
         <div class="actions" style="margin-top:12px">
-          <button type="button" class="btn petit" id="analyser">Vérifier ma demande</button>
-          <button type="button" class="btn petit clair" id="copier-demande">Copier</button>
+          <button type="button" class="btn" id="analyser">Vérifier ma demande</button>
+          <button type="button" class="btn clair" id="copier-demande">Copier</button>
         </div>
       </div>
       <div class="verdict-test" id="analyse" aria-live="polite">
         <p style="margin:0;color:var(--muted)">Cinq gestes vérifiés : le contexte, ce qui lui manque, les possibilités sans votre idée, le droit de ne pas savoir, la source exacte.</p>
       </div>
     </div>
+
+    <div class="plis">
+      <details>
+        <summary><span>Fermer l’entraînement du modèle<small>Le chemin dans les quatre outils</small></span></summary>
+        <div class="pli">
+          <div class="tableau">
+            <table>
+              <thead><tr><th>Outil</th><th>Où le fermer</th></tr></thead>
+              <tbody>
+                <tr><td>ChatGPT</td><td>Paramètres, Contrôles des données : « Améliorer le modèle pour tout le monde »</td></tr>
+                <tr><td>Claude</td><td>Paramètres, Confidentialité : « Aider à améliorer Claude »</td></tr>
+                <tr><td>Gemini</td><td>Activité dans les applications Gemini : « Conserver l’activité »</td></tr>
+                <tr><td>Copilot</td><td>Compte, Confidentialité : « Entraînement du modèle sur le texte »</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:16px;color:var(--muted)">Fermer l’entraînement ne rend pas l’outil confidentiel : l’entreprise conserve quand même les conversations. Règle : aucun renseignement de patient, peu importe le réglage.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>Gabarit de consignes<small>À coller une fois dans votre outil</small></span></summary>
+        <div class="pli">
+          <p>ChatGPT : Paramètres, Personnalisation. Claude : Paramètres, préférences personnelles. Gemini : créez un Gem et collez les règles dans ses instructions. Adaptez le premier bloc à votre pratique.</p>
+          <div class="gabarit" id="bloc1">Je suis audioprothésiste au Québec. J’écris surtout des courriels à des patients, des notes au dossier et des rapports. Mes lecteurs sont des patients âgés et des collègues. Je veux des réponses que je peux vérifier, dans un français simple, écrit comme je l’écrirais moi-même.</div>
+          <button type="button" class="btn clair" data-copie="bloc1">Copier le bloc 1</button>
+          <div class="gabarit" id="bloc2">COMMENT TRAVAILLER
+Si ma demande peut se comprendre de plusieurs façons, présente-les et demande-moi laquelle.
+S’il te manque une information pour répondre, demande-la-moi au lieu de deviner.
+Si une information te manque, dis-le au lieu de l’inventer.
+Quand tu t’appuies sur une source, donne-moi le lien. Si tu ne peux pas la vérifier, dis-le.
+Réponds seulement à ce que je demande. Quand tu corriges mon texte, modifie uniquement la partie visée et montre-moi ce que tu as changé.
+
+COMMENT ÉCRIRE
+Écris en français du Québec, avec des mots ordinaires et des phrases simples.
+Pour une incise, utilise une virgule, des parenthèses ou un deux-points.
+Commence par l’information utile et termine sur un fait concret.
+Garde le gras pour un seul mot, au besoin.
+Imite le ton des textes que je te donne en exemple.
+
+AVANT DE ME RÉPONDRE
+Relis ton texte et retire : les tirets longs, « Excellente question », les suites de trois adjectifs, la phrase-choc en fin de paragraphe, les émojis.</div>
+          <button type="button" class="btn clair" data-copie="bloc2">Copier le bloc 2</button>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>Projets et Gems<small>Vos documents de référence, toujours sous la main</small></span></summary>
+        <div class="pli">
+          <ol>
+            <li>Créez un projet « Encadrement du personnel » (Projets dans Claude ou ChatGPT, Gems dans Gemini).</li>
+            <li>Déposez-y la Loi, le Code de déontologie, le Guide sur l’encadrement du personnel d’assistance, le Guide de télépratique et l’Avis aux membres sur les solutions alternatives.</li>
+            <li>Instructions : « Réponds seulement à partir de ces documents. Cite la phrase exacte et la section. Si la réponse n’y est pas, dis-le. »</li>
+            <li>Posez votre question, puis ouvrez la section citée pour la lire vous-même.</li>
+          </ol>
+          <p style="font-size:16px;color:var(--muted)">Aucun document de patient dans un projet d’un outil grand public, même avec un abonnement payant.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>Vérifier une note avant de la signer<small>Pour un texte préparé avec l’aide de l’IA</small></span></summary>
+        <div class="pli">
+          <ul class="coches">
+            <li>Aucun renseignement qui permet d’identifier le patient n’est entré dans un outil grand public.</li>
+            <li>Chaque seuil, chaque valeur et chaque date vient de mon dossier, pas de l’IA.</li>
+            <li>J’ai vérifié l’oreille droite, l’oreille gauche et le degré de perte contre l’audiogramme.</li>
+            <li>Ce qui n’a pas été mesuré est écrit comme non mesuré, sans être deviné.</li>
+            <li>Chaque source citée : je l’ai ouverte, et la phrase y est.</li>
+            <li>La recommandation est la mienne, et je peux l’expliquer sans l’écran.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </div>
 </section>
 
-<section id="gestes">
+<section id="conference">
   <div class="wrap">
-    <p class="surtitre">Quatre pièges</p>
-    <h2>Le geste qui prévient chaque piège</h2>
+    <p class="surtitre">Revoir la conférence</p>
+    <h2>Quatre pièges, quatre gestes</h2>
     <p class="chapeau">Chaque piège a un nom dans notre tête et un nom dans la machine. Le geste se fait au moment d’écrire la demande.</p>
     <div class="pieges">
       <article class="piege">
@@ -471,191 +484,19 @@ header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
         </div>
       </article>
     </div>
-  </div>
-</section>
 
-<section id="niveaux">
-  <div class="wrap">
-    <p class="surtitre">Cinq niveaux</p>
-    <h2>Ce que vous apportez à l’IA change tout</h2>
-    <p class="chapeau">Rien encore, une question bien posée, vos documents, une autre IA, la description d’un outil. Le but : monter d’un seul niveau.</p>
-    <div class="niveaux">
-      <article class="niv">
-        <img src="img/niveau-0.webp" width="640" height="640" alt="" loading="lazy">
-        <div>
-          <span class="no">Niveau 0</span>
-          <h3>Je n’utilise pas l’IA</h3>
-          <ul>
-            <li>Installer l’application officielle, en vérifiant le nom de l’éditeur.</li>
-            <li>Créer un compte : la version gratuite suffit pour commencer.</li>
-            <li>Fermer l’entraînement du modèle.</li>
-          </ul>
-          <div class="tableau">
-            <table>
-              <thead><tr><th>Outil</th><th>Où fermer l’entraînement</th></tr></thead>
-              <tbody>
-                <tr><td>ChatGPT</td><td>Paramètres, Contrôles des données : « Améliorer le modèle pour tout le monde »</td></tr>
-                <tr><td>Claude</td><td>Paramètres, Confidentialité : « Aider à améliorer Claude »</td></tr>
-                <tr><td>Gemini</td><td>Activité dans les applications Gemini : « Conserver l’activité »</td></tr>
-                <tr><td>Copilot</td><td>Compte, Confidentialité : « Entraînement du modèle sur le texte »</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mini">Fermer l’entraînement ne rend pas l’outil confidentiel. Règle : aucun renseignement de patient, peu importe le réglage.</p>
-          <p class="monter"><b>Pour monter :</b> poser une première question personnelle, à l’écrit, puis avec le micro.</p>
-        </div>
-      </article>
-      <article class="niv">
-        <img src="img/niveau-1.webp" width="640" height="640" alt="" loading="lazy">
-        <div>
-          <span class="no">Niveau 1</span>
-          <h3>Perfectionner la requête</h3>
-          <ul>
-            <li>Donner le contexte : qui je suis, la situation, le titre de la personne concernée.</li>
-            <li>« Quelles sont les possibilités, de la plus probable à la moins probable? », sans donner mon idée.</li>
-            <li>« Si une information te manque, dis-le. Cite la phrase exacte qui appuie chaque affirmation. »</li>
-            <li>Écrire d’abord ma propre réponse, puis la comparer à la sienne.</li>
-          </ul>
-          <p class="monter"><b>Pour monter :</b> lui donner les documents, et exiger qu’elle s’y limite.</p>
-        </div>
-      </article>
-      <article class="niv">
-        <img src="img/niveau-2.webp" width="640" height="640" alt="" loading="lazy">
-        <div>
-          <span class="no">Niveau 2</span>
-          <h3>Donner ses documents</h3>
-          <ul>
-            <li>Glisser un PDF et demander un résumé.</li>
-            <li>« Réponds seulement à partir de ce document. Si l’information est absente, dis-le. »</li>
-            <li>« Cite la phrase exacte », puis la retrouver dans le document.</li>
-          </ul>
-          <p class="mini">De 50 % à 90 % des réponses médicales ne sont pas entièrement appuyées par les sources qu’elles citent. Retirez tout renseignement de patient avant de déposer un document.</p>
-          <p class="monter"><b>Pour monter :</b> faire vérifier une réponse importante par une autre IA.</p>
-        </div>
-      </article>
-      <article class="niv">
-        <img src="img/niveau-3.webp" width="640" height="640" alt="" loading="lazy">
-        <div>
-          <span class="no">Niveau 3</span>
-          <h3>Demander un deuxième avis</h3>
-          <ul>
-            <li>Poser la même question à deux IA et comparer.</li>
-            <li>Coller la réponse dans une autre IA : « Trouve les erreurs et ce qui manque. »</li>
-            <li>Là où elles ne sont pas d’accord, retourner à la source et trancher.</li>
-          </ul>
-          <p class="mini">Les IA partagent souvent les mêmes angles morts : leur accord n’est pas une preuve.</p>
-          <p class="monter"><b>Pour monter :</b> ce qui se répète devient un outil.</p>
-        </div>
-      </article>
-      <article class="niv">
-        <img src="img/niveau-4.webp" width="640" height="640" alt="" loading="lazy">
-        <div>
-          <span class="no">Niveau 4</span>
-          <h3>Construire ses outils</h3>
-          <ul>
-            <li>« Fais-moi un petit outil qui… » : Canvas dans ChatGPT, Artefacts dans Claude.</li>
-            <li>Le tester sur des cas dont on connaît la réponse.</li>
-            <li>Pour des outils plus complets : Claude Code ou Codex, et faire revoir le code par une autre IA.</li>
-          </ul>
-          <p class="mini">Devant un produit fini, on vérifie moins : seulement 8,7 % des conversations contiennent une vérification de ce que dit l’IA.</p>
-          <p class="monter"><b>À ce niveau :</b> un programme prévisible plutôt qu’un agent qui improvise.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="demo">
-  <div class="wrap">
-    <div class="demo">
-      <p class="surtitre">La démonstration</p>
-      <h2>Une même question, cinq niveaux</h2>
+    <h2 style="margin-top:48px">Cinq niveaux, une même question</h2>
+    <div class="niveaux-liste">
       <p class="q">« Un patient se présente avec un appareil auditif en vente libre acheté aux États-Unis. Mon assistante, qui est à distance dans une autre clinique avec le patient, peut-elle s’en occuper? »</p>
-      <div class="barres" id="barres">
-        <div class="l"><b>Niv. 0<small>Poser la question telle quelle</small></b><div class="t" data-v="55"><i></i><span>Poser la question telle quelle</span><em>55 %</em></div></div>
-        <div class="l"><b>Niv. 1<small>Donner le contexte, demander les possibilités</small></b><div class="t" data-v="80"><i></i><span>Donner le contexte, demander les possibilités</span><em>80 %</em></div></div>
-        <div class="l"><b>Niv. 2<small>Donner les documents de l’Ordre</small></b><div class="t" data-v="88"><i></i><span>Donner les documents de l’Ordre</span><em>88 %</em></div></div>
-        <div class="l"><b>Niv. 3<small>Faire vérifier, trancher à la source</small></b><div class="t" data-v="94"><i></i><span>Faire vérifier, trancher à la source</span><em>94 %</em></div></div>
-      </div>
-      <p class="chute">Score : moyenne de l’exactitude et de la complétude, sur un seul cas.</p>
+      <div class="nl"><span class="no">0</span><div><h3>Je n’utilise pas l’IA</h3><p>Installer l’application officielle, créer un compte, fermer l’entraînement. Puis poser la question telle quelle.</p></div><span class="score">55 %<small>score</small></span></div>
+      <div class="nl"><span class="no">1</span><div><h3>Perfectionner la requête</h3><p>Le contexte, les possibilités sans son idée, le droit de ne pas savoir, la phrase exacte, sa propre réponse d’abord.</p></div><span class="score">80 %<small>score</small></span></div>
+      <div class="nl"><span class="no">2</span><div><h3>Donner ses documents</h3><p>« Réponds seulement à partir de ce document », puis retrouver la phrase citée. De 50 % à 90 % des réponses médicales ne sont pas entièrement appuyées par leurs sources.</p></div><span class="score">88 %<small>score</small></span></div>
+      <div class="nl"><span class="no">3</span><div><h3>Demander un deuxième avis</h3><p>Coller la réponse dans une autre IA : « Trouve les erreurs et ce qui manque ». Là où elles divergent, trancher à la source.</p></div><span class="score">94 %<small>score</small></span></div>
+      <div class="nl"><span class="no">4</span><div><h3>Construire ses outils</h3><p>« Fais-moi un petit outil qui… », puis le tester sur des cas dont on connaît la réponse. Un programme prévisible plutôt qu’un agent qui improvise.</p></div><span class="score">Outils<small>vérifiés</small></span></div>
     </div>
-  </div>
-</section>
+    <p class="note-demo">Score : moyenne de l’exactitude et de la complétude de la réponse, sur un seul cas.</p>
 
-<section id="patient">
-  <div class="wrap">
-    <p class="surtitre">Un Canadien sur deux consulte l’IA pour sa santé</p>
-    <h2>Quand un patient arrive avec l’IA</h2>
-    <p class="chapeau">Trois phrases, dans cet ordre.</p>
-    <div class="bulles">
-      <div class="bulle"><div class="dit">« Qu’est-ce que l’IA vous a répondu? Ça m’intéresse. »</div><p class="n">1 · Demander ce qu’elle a dit</p><p>Les patients en parlent plus volontiers quand on les invite.</p></div>
-      <div class="bulle"><div class="dit">« Vous avez bien fait de chercher. Regardons-le ensemble. »</div><p class="n">2 · Saluer la démarche</p><p>L’empathie d’abord, le savoir ensuite : la correction passe mieux.</p></div>
-      <div class="bulle"><div class="dit">« L’IA n’a vu ni votre oreille ni votre audiogramme. On va considérer toutes les données ensemble. »</div><p class="n">3 · Ajouter ce qui manque</p><p>Une réponse juste en général peut être fausse pour ce patient.</p></div>
-    </div>
-    <p style="margin-top:22px">Votre plan : « Si un patient arrive avec un conseil de l’IA, alors je… »</p>
-  </div>
-</section>
-
-<section id="outils">
-  <div class="wrap etroit">
-    <p class="surtitre">Pour aller plus loin</p>
-    <h2>Gabarits et références</h2>
     <div class="plis">
-
-      <details>
-        <summary><span>Gabarit de consignes<small>À coller une fois dans votre outil</small></span></summary>
-        <div class="pli">
-          <p>ChatGPT : Paramètres, Personnalisation. Claude : Paramètres, préférences personnelles. Gemini : créez un Gem et collez les règles dans ses instructions. Adaptez le premier bloc à votre pratique.</p>
-          <div class="gabarit" id="bloc1">Je suis audioprothésiste au Québec. J’écris surtout des courriels à des patients, des notes au dossier et des rapports. Mes lecteurs sont des patients âgés et des collègues. Je veux des réponses que je peux vérifier, dans un français simple, écrit comme je l’écrirais moi-même.</div>
-          <button type="button" class="btn petit clair" data-copie="bloc1">Copier le bloc 1</button>
-          <div class="gabarit" id="bloc2">COMMENT TRAVAILLER
-Si ma demande peut se comprendre de plusieurs façons, présente-les et demande-moi laquelle.
-Avant une réponse importante, pose-moi les questions dont tu as besoin.
-Si une information te manque, dis-le au lieu de l’inventer.
-Quand tu t’appuies sur une source, donne-moi le lien. Si tu ne peux pas la vérifier, dis-le.
-Réponds seulement à ce que je demande. Quand tu corriges mon texte, modifie uniquement la partie visée et montre-moi ce que tu as changé.
-
-COMMENT ÉCRIRE
-Écris en français du Québec, avec des mots ordinaires et des phrases simples.
-Pour une incise, utilise une virgule, des parenthèses ou un deux-points.
-Commence par l’information utile et termine sur un fait concret.
-Garde le gras pour un seul mot, au besoin.
-Imite le ton des textes que je te donne en exemple.
-
-AVANT DE ME RÉPONDRE
-Relis ton texte et retire : les tirets longs, « Excellente question », les suites de trois adjectifs, la phrase-choc en fin de paragraphe, les émojis.</div>
-          <button type="button" class="btn petit clair" data-copie="bloc2">Copier le bloc 2</button>
-        </div>
-      </details>
-
-      <details>
-        <summary><span>Projets et Gems<small>Vos documents de référence, toujours sous la main</small></span></summary>
-        <div class="pli">
-          <p>Un projet garde vos instructions et vos documents au même endroit. Chaque conversation dans le projet part avec ce contexte.</p>
-          <ol>
-            <li>Créez un projet « Encadrement du personnel » (Projets dans Claude ou ChatGPT, Gems dans Gemini).</li>
-            <li>Déposez-y la Loi, le Code de déontologie, le Guide sur l’encadrement du personnel d’assistance, le Guide de télépratique et l’Avis aux membres sur les solutions alternatives.</li>
-            <li>Instructions : « Réponds seulement à partir de ces documents. Cite la phrase exacte et la section. Si la réponse n’y est pas, dis-le. »</li>
-            <li>Posez votre question, puis ouvrez la section citée pour la lire vous-même.</li>
-          </ol>
-          <p class="mini">Aucun document de patient dans un projet d’un outil grand public, même avec un abonnement payant.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary><span>Vérifier une note avant de la signer<small>Pour un texte préparé avec l’aide de l’IA</small></span></summary>
-        <div class="pli">
-          <ul class="coches">
-            <li>Aucun renseignement qui permet d’identifier le patient n’est entré dans un outil grand public.</li>
-            <li>Chaque seuil, chaque valeur et chaque date vient de mon dossier, pas de l’IA.</li>
-            <li>J’ai vérifié l’oreille droite, l’oreille gauche et le degré de perte contre l’audiogramme.</li>
-            <li>Ce qui n’a pas été mesuré est écrit comme non mesuré, sans être deviné.</li>
-            <li>Chaque source citée : je l’ai ouverte, et la phrase y est.</li>
-            <li>La recommandation est la mienne, et je peux l’expliquer sans l’écran.</li>
-          </ul>
-        </div>
-      </details>
-
       <details>
         <summary><span>Les documents de l’Ordre et la loi<small>Ceux de la démonstration</small></span></summary>
         <div class="pli">
@@ -670,7 +511,6 @@ Relis ton texte et retire : les tirets longs, « Excellente question », les 
           </ul>
         </div>
       </details>
-
       <details>
         <summary><span>Références scientifiques<small>Les études citées pendant la conférence</small></span></summary>
         <div class="pli">
@@ -718,7 +558,7 @@ Relis ton texte et retire : les tirets longs, « Excellente question », les 
 <footer>
   <div class="wrap">
     <p>David Gélinas, audioprothésiste. Les propos de cette trousse sont tenus à titre personnel et n’engagent pas le conseil d’administration de l’Ordre des audioprothésistes du Québec. Aucune affiliation commerciale avec les outils nommés.</p>
-    <p>Illustrations de la conférence. Cette page ne recueille aucune donnée : vos réponses restent dans votre appareil.</p>
+    <p>Cette page ne recueille aucune donnée : vos réponses et votre phrase restent dans votre appareil.</p>
   </div>
 </footer>
 
@@ -737,24 +577,109 @@ document.querySelectorAll('.refs li[data-q]').forEach(function(li){
 document.querySelectorAll('button[data-copie]').forEach(function(b){
   b.addEventListener('click',function(){copier(document.getElementById(b.getAttribute('data-copie')).innerText,b);});
 });
-
-/* Barres de la démonstration et navigation active */
-function remplir(t){t.querySelector('i').style.width=t.getAttribute('data-v')+'%';}
 if('IntersectionObserver' in window){
-  var vu=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('.t').forEach(function(t,i){setTimeout(function(){remplir(t);},i*180);});vu.unobserve(e.target);}});},{threshold:.35});
-  vu.observe(document.getElementById('barres'));
   var liens=[].slice.call(document.querySelectorAll('nav a'));
-  var nv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){liens.forEach(function(a){a.classList.toggle('actif',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-45% 0px -50% 0px'});
+  var nv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){liens.forEach(function(a){a.classList.toggle('actif',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-40% 0px -55% 0px'});
   document.querySelectorAll('main section').forEach(function(s){nv.observe(s);});
-}else{document.querySelectorAll('#barres .t').forEach(remplir);}
+}
 
 /* Mémoire locale */
 var CLE='trousse-ia-v2';
 function lire(){try{return JSON.parse(localStorage.getItem(CLE))||{};}catch(e){return {};}}
 function ecrire(o){try{localStorage.setItem(CLE,JSON.stringify(o));}catch(e){}}
 
-/* Questionnaire, une question à la fois */
-var form=document.getElementById('questionnaire');
+/* Contenu des niveaux et des gestes */
+var NIVEAUX=['Je n’utilise pas l’IA','Perfectionner la requête','Donner ses documents','Demander un deuxième avis','Construire ses outils'];
+var PROCHAIN={
+  installer:{titre:'Installer l’application officielle et fermer l’entraînement',texte:'Choisissez un outil, installez l’application officielle en vérifiant le nom de l’éditeur, puis fermez l’entraînement (le chemin est dans « Mes outils »). Ensuite, posez-lui une première question personnelle.',phrase:''},
+  entrainement:{titre:'Fermer l’entraînement du modèle',texte:'Dans les paramètres de votre outil, fermez l’option qui sert à entraîner le modèle avec vos conversations. Le chemin pour chaque outil est dans « Mes outils ».',phrase:''},
+  contexte:{titre:'Donner le contexte, et laisser l’IA dire ce qui lui manque',texte:'Avant votre prochaine question, écrivez deux phrases de contexte : qui vous êtes, la situation, ce que vous voulez en faire. Puis ajoutez :',phrase:'S’il te manque une information pour répondre, demande-la-moi au lieu de deviner.'},
+  documents:{titre:'Donner le document, et exiger qu’elle s’y limite',texte:'La prochaine fois qu’une question touche un guide ou une norme, glissez le PDF dans la conversation et écrivez :',phrase:'Réponds seulement à partir de ce document. Cite la phrase exacte et la section. Si l’information est absente, dis-le.'},
+  avis:{titre:'Faire vérifier une réponse importante par une autre IA',texte:'Copiez la réponse dans une deuxième IA, sans dire d’où elle vient. Là où elles divergent, retournez à la source.',phrase:'Voici une réponse à vérifier. Trouve les erreurs et ce qui manque. Pour chaque point, cite la source.'},
+  outil:{titre:'Faire construire un petit outil, puis le tester',texte:'Pensez à une tâche que vous refaites chaque semaine. Décrivez-la dans Canvas (ChatGPT) ou les Artefacts (Claude), puis testez l’outil sur trois cas dont vous connaissez la réponse.',phrase:'Fais-moi un petit outil qui… Pose-moi tes questions avant de commencer.'},
+  maitrise:{titre:'Un programme prévisible, et un humain qui vérifie',texte:'Gardez un point de contrôle humain sur chaque outil, faites revoir le code par une autre IA, et préférez un script qui fait toujours la même chose à un agent qui improvise.',phrase:''}
+};
+var PROCHAIN_PLACE={0:'installer',1:'contexte',2:'avis',3:'outil',4:'maitrise'};
+var USAGES={
+  courriels:['Courriels et lettres','Collez le gabarit de consignes une fois, donnez-lui un de vos courriels comme exemple, et relisez chaque date, nom et chiffre avant d’envoyer.'],
+  notes:['Notes au dossier','Aucun renseignement qui identifie le patient dans un outil grand public. Chaque valeur vient de votre dossier, pas de l’IA.'],
+  resume:['Résumer un document','« Réponds seulement à partir de ce document. Cite la phrase exacte. » Puis retrouvez la phrase dans le PDF.'],
+  clinique:['Questions cliniques','« Quelles sont les possibilités, de la plus probable à la moins probable? » Écrivez d’abord votre propre réponse.'],
+  patient:['Explications au patient','Demandez un texte simple, puis ajoutez ce que l’IA ne sait pas : l’audiogramme, l’examen, le quotidien du patient.']
+};
+var CHAMPS=['usage','entrainement','contexte','documents','avis','outil','patients'];
+function complet(r){return r&&CHAMPS.every(function(k){return r[k]!==null&&r[k]!==undefined;});}
+function calculer(r){
+  var et=[r.usage!=='0'&&r.entrainement==='oui',r.contexte==='2',r.documents==='2',r.avis==='2',r.outil==='2'];
+  var m=et.indexOf(false);if(m<0)m=5;
+  return {niveau:[0,1,1,2,3,4][m],prochain:m===0?(r.usage==='0'?'installer':'entrainement'):['','contexte','documents','avis','outil','maitrise'][m]};
+}
+function dateFr(iso){var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];var d=new Date(iso+'T12:00:00');return d.getDate()+(d.getDate()===1?'er':'')+' '+mois[d.getMonth()]+' '+d.getFullYear();}
+
+/* Mon parcours : un seul panneau pour le niveau, le geste et le plan */
+var panneau=document.getElementById('mon-geste'),champPhrase=document.getElementById('phrase');
+var DEBUT_PHRASE='Si un patient arrive avec un conseil de l’IA, alors je ';
+function ajuster(){champPhrase.style.height='auto';champPhrase.style.height=(champPhrase.scrollHeight+4)+'px';}
+function planTexte(n,p,r){
+  var l=['Mon plan IA (trousse du Congrès 2026 des audioprothésistes du Québec)','','Mon niveau : '+n+', '+NIVEAUX[n],'Mon prochain geste : '+p.titre,p.texte];
+  if(p.phrase)l.push('« '+p.phrase+' »');
+  var ph=lire().phrase;if(ph)l.push('','Ma phrase : '+ph);
+  if(r&&r.usages&&r.usages.length){l.push('');r.usages.forEach(function(u){if(USAGES[u])l.push('- '+USAGES[u][0]+' : '+USAGES[u][1]);});}
+  l.push('','https://davidgbass.github.io/trousse-ia/');
+  return l.join('\n');
+}
+function rendre(){
+  var etat=lire(),n=etat.place;
+  if(typeof n!=='number'){panneau.hidden=true;return;}
+  document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){b.classList.toggle('ici',+b.getAttribute('data-n')===n);});
+  var r=complet(etat.reponses)?etat.reponses:null;
+  var parQuiz=r&&etat.quizNiveau===n;
+  var p=PROCHAIN[parQuiz?calculer(r).prochain:PROCHAIN_PLACE[n]];
+  var h='<p class="surtitre" style="margin:0">Niveau '+n+' · '+esc(NIVEAUX[n])+'</p><p class="niv-titre">'+esc(p.titre)+'</p><p>'+esc(p.texte)+'</p>';
+  if(p.phrase)h+='<p class="dire">« '+esc(p.phrase)+' »</p>';
+  if(r){
+    if(r.patients==='oui')h+='<div class="alerte rouge"><b>À changer dès aujourd’hui :</b> aucun renseignement de patient dans un outil grand public, même sans le nom, même avec l’entraînement fermé.</div>';
+    else if(r.patients==='sansnom')h+='<div class="alerte jaune"><b>Attention :</b> retirer le nom ne suffit pas toujours. Une date ou une condition rare peut permettre de reconnaître la personne.</div>';
+    if(r.entrainement==='nsp')h+='<div class="alerte jaune">Le chemin pour fermer l’entraînement est dans « Mes outils ».</div>';
+    var us=(r.usages||[]).filter(function(u){return USAGES[u];});
+    if(us.length){h+='<div class="usages">';us.forEach(function(u){h+='<div class="usage"><b>'+esc(USAGES[u][0])+'</b><p>'+esc(USAGES[u][1])+'</p></div>';});h+='</div>';}
+  }
+  var hist=etat.historique||[];
+  if(hist.length>1){var av=hist[hist.length-2],ap=hist[hist.length-1],d=ap.niveau-av.niveau;
+    h+='<p class="historique">Le '+dateFr(av.date)+' : niveau '+av.niveau+'. Aujourd’hui : niveau '+ap.niveau+'.'+(d>0?' Vous avez monté de '+d+' niveau'+(d>1?'x':'')+'.':'')+'</p>';}
+  h+='<div class="actions"><button type="button" class="btn clair" data-ouvre-quiz>'+(r?'Refaire le questionnaire':'Affiner mon niveau (2 minutes)')+'</button>'+(r?'<button type="button" class="btn" id="copier-plan">Copier mon plan</button>':'')+'</div>';
+  document.getElementById('geste-choisi').innerHTML=h;
+  panneau.hidden=false;
+  if(!champPhrase.value)champPhrase.value=etat.phrase||DEBUT_PHRASE;
+  setTimeout(ajuster,0);
+  var bp=document.getElementById('copier-plan');
+  if(bp)bp.addEventListener('click',function(){copier(planTexte(n,p,r),bp);});
+  lierQuiz(document.getElementById('geste-choisi'));
+}
+function placer(n){
+  var etat=lire();etat.place=n;ecrire(etat);
+  fermerQuiz();rendre();
+  panneau.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){if(champPhrase.value===DEBUT_PHRASE){champPhrase.focus();champPhrase.setSelectionRange(champPhrase.value.length,champPhrase.value.length);}},500);
+}
+document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){
+  b.addEventListener('click',function(){placer(+b.getAttribute('data-n'));});
+});
+var minuterie;
+function sauverPhrase(){var etat=lire();etat.phrase=champPhrase.value;ecrire(etat);
+  document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone. Lisez-la à votre voisin.';}
+champPhrase.addEventListener('input',function(){ajuster();clearTimeout(minuterie);minuterie=setTimeout(sauverPhrase,400);});
+document.querySelectorAll('[data-idee]').forEach(function(b){
+  b.addEventListener('click',function(){
+    var v=champPhrase.value.replace(/\s+$/,''),ajout=b.getAttribute('data-idee');
+    if(v===''||v===DEBUT_PHRASE.trim()||/alors je$/.test(v))champPhrase.value=(v===''?DEBUT_PHRASE.trim():v)+' '+ajout;
+    else champPhrase.value=v+(/[.!?]$/.test(v)?' Puis je ':'. Puis je ')+ajout;
+    ajuster();sauverPhrase();
+  });
+});
+
+/* Questionnaire, dans le parcours */
+var quiz=document.getElementById('quiz'),form=document.getElementById('questionnaire');
 var etapes=[].slice.call(form.querySelectorAll('.etape'));
 var idx=0,bRetour=document.getElementById('retour'),bCont=document.getElementById('continuer');
 function montrer(i){
@@ -765,141 +690,47 @@ function montrer(i){
   bRetour.style.visibility=i===0?'hidden':'visible';
   bCont.hidden=!etapes[i].hasAttribute('data-multiple');
 }
+function ouvrirQuiz(){quiz.hidden=false;montrer(0);quiz.scrollIntoView({behavior:'smooth',block:'start'});}
+function fermerQuiz(){quiz.hidden=true;}
+function lierQuiz(racine){racine.querySelectorAll('[data-ouvre-quiz]').forEach(function(b){b.addEventListener('click',ouvrirQuiz);});}
+lierQuiz(document);
+document.getElementById('fermer-quiz').addEventListener('click',fermerQuiz);
 function suivant(){if(idx<etapes.length-1){montrer(idx+1);}else{terminer();}}
 form.addEventListener('change',function(ev){if(ev.target.type==='radio'){setTimeout(suivant,260);}});
 bCont.addEventListener('click',suivant);
 bRetour.addEventListener('click',function(){if(idx>0)montrer(idx-1);});
-
-var NIVEAUX=[
-  {nom:'Je n’utilise pas l’IA',court:'Vous n’avez pas encore commencé, ou pas encore en sécurité.'},
-  {nom:'Perfectionner la requête',court:'Vous posez vos questions à l’IA.'},
-  {nom:'Donner ses documents',court:'Vous lui donnez vos documents et vous vérifiez ses citations.'},
-  {nom:'Demander un deuxième avis',court:'Vous faites vérifier les réponses importantes par une autre IA.'},
-  {nom:'Construire ses outils',court:'Vous faites construire vos propres outils, et vous les testez.'}
-];
-var PROCHAIN={
-  installer:{etiq:'Votre prochain geste',titre:'Installer l’application officielle et fermer l’entraînement',texte:'Choisissez un outil, installez l’application officielle en vérifiant le nom de l’éditeur, puis fermez l’entraînement dans les paramètres. Ensuite, posez-lui une première question personnelle.',phrase:''},
-  entrainement:{etiq:'Votre prochain geste',titre:'Fermer l’entraînement du modèle',texte:'Dans les paramètres de votre outil, fermez l’option qui sert à entraîner le modèle avec vos conversations. Le chemin pour chaque outil est dans la section « Les niveaux ».',phrase:''},
-  contexte:{etiq:'Votre prochain geste',titre:'Donner le contexte, et laisser l’IA dire ce qui lui manque',texte:'Avant votre prochaine question, écrivez deux phrases de contexte : qui vous êtes, la situation, ce que vous voulez en faire. Puis ajoutez :',phrase:'S’il te manque une information pour répondre, demande-la-moi au lieu de deviner.'},
-  documents:{etiq:'Pour passer au niveau 2',titre:'Donner le document, et exiger qu’elle s’y limite',texte:'La prochaine fois qu’une question touche un guide ou une norme, glissez le PDF dans la conversation et écrivez :',phrase:'Réponds seulement à partir de ce document. Cite la phrase exacte et la section. Si l’information est absente, dis-le.'},
-  avis:{etiq:'Pour passer au niveau 3',titre:'Faire vérifier une réponse importante par une autre IA',texte:'Copiez la réponse dans une deuxième IA, sans dire d’où elle vient. Là où elles divergent, retournez à la source.',phrase:'Voici une réponse à vérifier. Trouve les erreurs et ce qui manque. Pour chaque point, cite la source.'},
-  outil:{etiq:'Pour passer au niveau 4',titre:'Faire construire un petit outil, puis le tester',texte:'Pensez à une tâche que vous refaites chaque semaine. Décrivez-la dans Canvas (ChatGPT) ou les Artefacts (Claude), puis testez l’outil sur trois cas dont vous connaissez la réponse.',phrase:'Fais-moi un petit outil qui… Pose-moi tes questions avant de commencer.'},
-  maitrise:{etiq:'Pour aller plus loin',titre:'Un programme prévisible, et un humain qui vérifie',texte:'Gardez un point de contrôle humain sur chaque outil, faites revoir le code par une autre IA, et préférez un script qui fait toujours la même chose à un agent qui improvise.',phrase:''}
-};
-var USAGES={
-  courriels:['Courriels et lettres','Collez le gabarit de consignes une fois, donnez-lui un de vos courriels comme exemple, et relisez chaque date, nom et chiffre avant d’envoyer.'],
-  notes:['Notes au dossier','Aucun renseignement qui identifie le patient dans un outil grand public. Chaque valeur vient de votre dossier, pas de l’IA.'],
-  resume:['Résumer un document','« Réponds seulement à partir de ce document. Cite la phrase exacte. » Puis retrouvez la phrase dans le PDF.'],
-  clinique:['Questions cliniques','« Quelles sont les possibilités, de la plus probable à la moins probable? » Écrivez d’abord votre propre réponse.'],
-  patient:['Explications au patient','Demandez un texte simple, puis ajoutez ce que l’IA ne sait pas : l’audiogramme, l’examen, le quotidien du patient.']
-};
 function valeur(n){var e=form.querySelector('input[name="'+n+'"]:checked');return e?e.value:null;}
 function cocher(n,v){var e=form.querySelector('input[name="'+n+'"][value="'+v+'"]');if(e)e.checked=true;}
-function reponses(){
-  return {usage:valeur('usage'),entrainement:valeur('entrainement'),contexte:valeur('contexte'),documents:valeur('documents'),avis:valeur('avis'),outil:valeur('outil'),patients:valeur('patients'),
-    usages:[].map.call(form.querySelectorAll('input[name="usages"]:checked'),function(e){return e.value;})};
-}
-function calculer(r){
-  var a0=r.usage!=='0'&&r.entrainement==='oui';
-  var et=[a0,r.contexte==='2',r.documents==='2',r.avis==='2',r.outil==='2'];
-  var m=et.indexOf(false);if(m<0)m=5;
-  return {niveau:[0,1,1,2,3,4][m],prochain:m===0?(r.usage==='0'?'installer':'entrainement'):['','contexte','documents','avis','outil','maitrise'][m]};
-}
-function dateFr(iso){var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];var d=new Date(iso+'T12:00:00');return d.getDate()+(d.getDate()===1?'er':'')+' '+mois[d.getMonth()]+' '+d.getFullYear();}
-function planTexte(r,res){
-  var p=PROCHAIN[res.prochain];
-  var l=['Mon plan IA (trousse du Congrès 2026 des audioprothésistes du Québec)','','Mon niveau : '+res.niveau+', '+NIVEAUX[res.niveau].nom,'Mon prochain geste : '+p.titre,p.texte];
-  if(p.phrase)l.push('« '+p.phrase+' »');
-  if(r.usages.length){l.push('');r.usages.forEach(function(u){l.push('- '+USAGES[u][0]+' : '+USAGES[u][1]);});}
-  l.push('','Règle : aucun renseignement de patient dans un outil grand public.','https://davidgbass.github.io/trousse-ia/');
-  return l.join('\n');
-}
-function afficher(r,res,etat){
-  var out=document.getElementById('resultat'),p=PROCHAIN[res.prochain];
-  var h='<div class="verdict"><img src="img/niveau-'+res.niveau+'.webp" width="640" height="640" alt="">';
-  h+='<div><p class="surtitre" style="margin:0">Votre niveau</p><p class="gros">'+res.niveau+'<small>'+esc(NIVEAUX[res.niveau].nom)+'</small></p>';
-  h+='<div class="escalier" aria-hidden="true">';
-  for(var i=0;i<5;i++){h+='<span class="'+(i<res.niveau?'fait':(i===res.niveau?'ici':''))+'" data-h="'+(26+i*12)+'">'+i+'</span>';}
-  h+='</div><p style="margin:6px 0 0;color:var(--muted)">'+esc(NIVEAUX[res.niveau].court)+'</p></div></div>';
-  h+='<div class="geste"><span class="etiq">'+esc(p.etiq)+'</span><h3>'+esc(p.titre)+'</h3><p>'+esc(p.texte)+'</p>';
-  if(p.phrase)h+='<p class="dire">« '+esc(p.phrase)+' »</p>';
-  h+='</div>';
-  if(r.patients==='oui')h+='<div class="alerte rouge"><b>À changer dès aujourd’hui :</b> aucun renseignement de patient dans un outil grand public, même sans le nom, même avec l’entraînement fermé.</div>';
-  else if(r.patients==='sansnom')h+='<div class="alerte jaune"><b>Attention :</b> retirer le nom ne suffit pas toujours. Une date ou une condition rare peut permettre de reconnaître la personne.</div>';
-  if(r.entrainement==='nsp')h+='<div class="alerte jaune">Le chemin pour fermer l’entraînement, outil par outil, est dans la section « Les niveaux ».</div>';
-  if(r.usages.length){h+='<div class="usages">';r.usages.forEach(function(u){h+='<div class="usage"><b>'+esc(USAGES[u][0])+'</b><p>'+esc(USAGES[u][1])+'</p></div>';});h+='</div>';}
-  var hist=etat.historique||[];
-  if(hist.length>1){var av=hist[hist.length-2],ap=hist[hist.length-1],d=ap.niveau-av.niveau;
-    h+='<p class="historique">Le '+dateFr(av.date)+' : niveau '+av.niveau+'. Aujourd’hui : <b>niveau '+ap.niveau+'</b>. '+(d>0?'Vous avez monté de '+d+' niveau'+(d>1?'x':'')+'.':'Le prochain geste est ci-dessus.')+'</p>';}
-  else h+='<p class="historique">Revenez refaire le test dans quelques semaines pour voir votre progression.</p>';
-  h+='<div class="actions no-print" style="margin-top:18px"><button type="button" class="btn petit" id="copier-plan">Copier mon plan</button><button type="button" class="btn petit clair" id="refaire">Refaire le test</button></div>';
-  out.innerHTML=h;out.hidden=false;form.hidden=true;
-  setTimeout(function(){out.querySelectorAll('.escalier span').forEach(function(s,i){setTimeout(function(){s.style.height=s.getAttribute('data-h')+'px';},i*90);});},80);
-  var texte=planTexte(r,res),bp=document.getElementById('copier-plan');
-  bp.addEventListener('click',function(){copier(texte,bp);});
-  document.getElementById('refaire').addEventListener('click',function(){out.hidden=true;form.hidden=false;montrer(0);document.getElementById('niveau').scrollIntoView({behavior:'smooth'});});
-}
 function terminer(){
-  var r=reponses();
-  var manque=['usage','entrainement','contexte','documents','avis','outil','patients'].filter(function(k){return r[k]===null;});
+  var r={usages:[].map.call(form.querySelectorAll('input[name="usages"]:checked'),function(e){return e.value;})};
+  CHAMPS.forEach(function(k){r[k]=valeur(k);});
+  var manque=CHAMPS.filter(function(k){return r[k]===null;});
   if(manque.length){montrer(etapes.findIndex(function(e){return e.getAttribute('data-nom')===manque[0];}));return;}
-  document.getElementById('barre').style.width='100%';
   var res=calculer(r),etat=lire();
   var d=new Date(),iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   var hist=etat.historique||[];
   if(hist.length&&hist[hist.length-1].date===iso)hist[hist.length-1].niveau=res.niveau;else hist.push({date:iso,niveau:res.niveau});
-  etat.historique=hist.slice(-12);etat.reponses=r;etat.place=res.niveau;ecrire(etat);if(window.placer)window.placer(res.niveau,false);
-  afficher(r,res,etat);
-  document.getElementById('niveau').scrollIntoView({behavior:'smooth'});
+  etat.historique=hist.slice(-12);etat.reponses=r;etat.place=res.niveau;etat.quizNiveau=res.niveau;ecrire(etat);
+  fermerQuiz();rendre();
+  panneau.scrollIntoView({behavior:'smooth',block:'start'});
 }
-montrer(0);
+
+/* Au chargement : la page se souvient */
 (function(){
-  var etat=lire();if(!etat.reponses)return;var r=etat.reponses;
-  if(r.usage==='3')r.usage='2';
-  r.usages=(r.usages||[]).filter(function(u){return USAGES[u];});
-  ['usage','entrainement','contexte','documents','avis','outil','patients'].forEach(function(k){if(r[k]!==null)cocher(k,r[k]);});
-  r.usages.forEach(function(u){cocher('usages',u);});
-  if(['usage','entrainement','contexte','documents','avis','outil','patients'].some(function(k){return r[k]===null;}))return;
-  afficher(r,calculer(r),etat);
+  var etat=lire(),r=etat.reponses;
+  if(r){if(r.usage==='3')r.usage='2';CHAMPS.forEach(function(k){if(r[k]!==null&&r[k]!==undefined)cocher(k,r[k]);});(r.usages||[]).forEach(function(u){cocher('usages',u);});
+    if(typeof etat.place!=='number'&&complet(r)){etat.place=calculer(r).niveau;etat.quizNiveau=etat.place;ecrire(etat);}}
+  champPhrase.value=etat.phrase||'';
+  rendre();
 })();
-
-
-/* Accueil : se placer sur l’escalier, écrire sa phrase */
-var PROCHAIN_PLACE={0:'installer',1:'contexte',2:'avis',3:'outil',4:'maitrise'};
-var DEBUT_PHRASE='Si un patient arrive avec un conseil de l’IA, alors je ';
-var champPhrase=document.getElementById('phrase');
-function placer(n,defiler){
-  document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){b.classList.toggle('ici',+b.getAttribute('data-n')===n);});
-  var etat=lire();
-  var cle=(etat.reponses&&etat.place===n&&etat.reponses.patients)?calculer(etat.reponses).prochain:PROCHAIN_PLACE[n];
-  var p=PROCHAIN[cle];
-  var h='<p class="surtitre" style="margin:0">Niveau '+n+' · '+esc(NIVEAUX[n].nom)+'</p><p class="niv-titre">'+esc(p.titre)+'</p><p>'+esc(p.texte)+'</p>';
-  if(p.phrase)h+='<p class="dire">« '+esc(p.phrase)+' »</p>';
-  document.getElementById('geste-choisi').innerHTML=h;
-  var bloc=document.getElementById('mon-geste');bloc.hidden=false;
-  if(!champPhrase.value)champPhrase.value=etat.phrase||DEBUT_PHRASE;setTimeout(function(){if(window.ajusterPhrase)window.ajusterPhrase();},0);
-  if(defiler){bloc.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){champPhrase.focus();champPhrase.setSelectionRange(champPhrase.value.length,champPhrase.value.length);},500);}
-}
-window.placer=placer;window.ajusterPhrase=function(){ajuster();};
-document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){
-  b.addEventListener('click',function(){var n=+b.getAttribute('data-n');var etat=lire();etat.place=n;ecrire(etat);placer(n,true);});
-});
-function ajuster(){champPhrase.style.height='auto';champPhrase.style.height=(champPhrase.scrollHeight+4)+'px';}
-var minuterie;
-champPhrase.addEventListener('input',function(){
-  ajuster();clearTimeout(minuterie);
-  minuterie=setTimeout(function(){var etat=lire();etat.phrase=champPhrase.value;ecrire(etat);
-    document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone. Lisez-la à votre voisin.';},400);
-});
-(function(){var etat=lire();if(typeof etat.place==='number'){champPhrase.value=etat.phrase||DEBUT_PHRASE;placer(etat.place,false);ajuster();}})();
 
 /* Testeur de demande */
 var CRITERES=[
   {id:'contexte',titre:'Le contexte',ok:/je suis|audioproth|ma clinique|mon patient|ma patiente|mon assistante|notre clinique|contexte|situation/i,manque:'Qui vous êtes et la situation.',ajout:'Contexte : je suis audioprothésiste au Québec. [Décrivez la situation en deux phrases.]',avant:true},
   {id:'questions',titre:'Ce qui lui manque',ok:/pose-moi|poser des questions|questions dont tu as besoin|avant de répondre|demande-la-moi|au lieu de deviner/i,manque:'Sans ça, l’IA devine ce qui lui manque.',ajout:'S’il te manque une information pour répondre, demande-la-moi au lieu de deviner.'},
-  {id:'possibilites',titre:'Les possibilités',ok:/possibilit|causes possibles|plus probable|options|hypoth[eè]ses/i,manque:'La demande appelle une seule réponse.',ajout:'Quelles sont les possibilités, de la plus probable à la moins probable?'},
-  {id:'ignorance',titre:'Le droit de ne pas savoir',ok:/si tu ne sais pas|dis-le|au lieu de l.inventer|n.invente pas|je ne sais pas/i,manque:'Sans permission, l’IA comble les trous.',ajout:'Si une information te manque, dis-le au lieu de l’inventer.'},
-  {id:'source',titre:'La source exacte',ok:/cite|source|lien|r[ée]f[ée]rence|phrase exacte|article/i,manque:'Vous ne pourrez pas vérifier.',ajout:'Cite la phrase exacte qui appuie chaque affirmation, et donne-moi le lien.'}
+  {id:'possibilites',titre:'Les possibilités',ok:/possibilit|causes possibles|plus probable|options|hypoth[eè]ses/i,manque:'La demande appelle une seule réponse, qui penchera vers votre idée.',ajout:'Quelles sont les possibilités, de la plus probable à la moins probable?'},
+  {id:'ignorance',titre:'Le droit de ne pas savoir',ok:/si tu ne sais pas|dis-le|au lieu de l.inventer|n.invente pas|je ne sais pas/i,manque:'Sans permission, l’IA comble les trous en devinant.',ajout:'Si une information te manque, dis-le au lieu de l’inventer.'},
+  {id:'source',titre:'La source exacte',ok:/cite|source|lien|r[ée]f[ée]rence|phrase exacte|article/i,manque:'Vous ne pourrez pas vérifier la réponse.',ajout:'Cite la phrase exacte qui appuie chaque affirmation, et donne-moi le lien.'}
 ];
 var OPINION=/j.ai raison|je pense que|je crois que|n.est-ce pas|c.est bien ça|confirme(-moi)?|tu es d.accord/i;
 var IDENT=/\b[A-Z]{4}\s?\d{4}\s?\d{4}\b|\bné(e)? le\b|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}\s(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s\d{4}\b|\b(M\.|Mme|Monsieur|Madame)\s[A-ZÉÈ][a-zéèêëàâîïôöûü]+/;
@@ -909,7 +740,7 @@ function analyser(){
   if(!t){box.innerHTML='<p style="margin:0">Collez d’abord votre demande dans la boîte.</p>';return;}
   var n=0,h='',barres='';
   CRITERES.forEach(function(c){var ok=c.ok.test(t);if(ok)n++;barres+='<i class="'+(ok?'on':'')+'"></i>';
-    if(!ok)h+='<div class="manque"><span class="pt">+</span><div><p><b>'+esc(c.titre)+'.</b> '+esc(c.manque)+'</p><button type="button" class="btn petit clair" data-ajout="'+c.id+'">Ajouter la phrase</button></div></div>';});
+    if(!ok)h+='<div class="manque"><span class="pt">+</span><div><p><b>'+esc(c.titre)+'.</b> '+esc(c.manque)+'</p><button type="button" class="btn clair" data-ajout="'+c.id+'">Ajouter la phrase</button></div></div>';});
   var al='';
   if(IDENT.test(t))al+='<div class="manque"><span class="pt r">!</span><div><p><b>Renseignement de patient possible.</b> Retirez nom, date ou numéro avant d’envoyer.</p></div></div>';
   if(OPINION.test(t))al+='<div class="manque"><span class="pt r">!</span><div><p><b>Votre opinion est dans la question.</b> La réponse va pencher de votre côté.</p></div></div>';
