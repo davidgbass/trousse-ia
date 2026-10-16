@@ -90,8 +90,14 @@ nav a:hover,nav a.actif{background:var(--mint);color:var(--teal-deep)}
 @media (max-width:560px){.marche-btn{width:38px;height:38px;font-size:16px}.marche-btn.ici::before{font-size:11px}}
 
 /* Mon geste et ma phrase */
-.mon-geste{margin-top:16px;display:grid;gap:14px;animation:entre .4s ease both}
-@media (min-width:860px){.mon-geste{grid-template-columns:1.1fr 1fr;align-items:start}}
+.mon-geste{margin:22px auto 0;display:grid;gap:22px;max-width:760px;animation:entre .4s ease both}
+.testeur{max-width:760px}
+#mon-geste,#quiz{scroll-margin-top:70px}
+.carnet{margin-inline:auto}
+.etape-titre{display:flex;align-items:center;gap:12px;margin:0 0 10px;font-family:var(--display);font-size:22px;font-weight:600}
+.etape-titre b{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-content:center;background:var(--teal);color:var(--on-teal);font-size:17px}
+.scene-tete .etape-titre{font-size:clamp(24px,4vw,34px);margin:0}
+.scene-tete .etape-titre b{width:40px;height:40px;font-size:20px}
 .geste-choisi{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:var(--shadow)}
 .geste-choisi .niv-titre{font-family:var(--display);font-size:24px;font-weight:600;margin:4px 0 10px;line-height:1.2}
 .geste-choisi p{margin:6px 0}
@@ -142,7 +148,6 @@ nav a:hover,nav a.actif{background:var(--mint);color:var(--teal-deep)}
 
 /* Mes outils */
 .testeur{display:grid;gap:18px}
-@media (min-width:860px){.testeur{grid-template-columns:1.1fr 1fr;align-items:start}}
 .testeur>div{min-width:0}
 .testeur textarea{width:100%;min-height:200px;font:18px/28px var(--body);color:var(--ink);background-color:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px 16px;resize:vertical;
   background-image:repeating-linear-gradient(transparent 0 27px,color-mix(in srgb,var(--line) 70%,transparent) 27px 28px);background-attachment:local;background-position:0 14px}
@@ -226,7 +231,7 @@ footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);
   <div class="wrap">
     <div class="scene apparait">
       <div class="scene-tete">
-        <h2>Où êtes-vous sur l’escalier?</h2>
+        <h2 class="etape-titre"><b>1</b>Où êtes-vous sur l’escalier?</h2>
         <p>Touchez votre marche.</p>
       </div>
       <div class="scene-image">
@@ -248,17 +253,23 @@ footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);
     </div>
 
     <div id="mon-geste" class="mon-geste" hidden aria-live="polite">
-      <div class="geste-choisi" id="geste-choisi"></div>
+      <div>
+        <h3 class="etape-titre"><b>2</b>Votre prochain geste</h3>
+        <div class="geste-choisi" id="geste-choisi"></div>
+      </div>
+      <div>
+      <h3 class="etape-titre"><b>3</b>Votre phrase, à lire à votre voisin</h3>
       <div class="ma-phrase">
-        <label for="phrase" class="surtitre">Votre phrase</label>
+        <label for="phrase" class="surtitre">Complétez la phrase</label>
         <textarea id="phrase" rows="3"></textarea>
-        <p class="phrase-aide" id="phrase-etat">Complétez-la, puis lisez-la à votre voisin. Elle reste dans votre téléphone.</p>
+        <p class="phrase-aide" id="phrase-etat">Elle reste dans votre téléphone.</p>
         <div class="idees">
           <p>Besoin d’une idée? Touchez-en une pour l’ajouter.</p>
           <button type="button" data-idee="lui demande ce que l’IA lui a répondu, avec intérêt.">« Qu’est-ce que l’IA vous a répondu? »<span>Demander ce qu’elle a dit</span></button>
           <button type="button" data-idee="lui dis qu’il a bien fait de chercher, et on regarde la réponse ensemble.">« Vous avez bien fait de chercher. »<span>Saluer la démarche</span></button>
           <button type="button" data-idee="ajoute ce que l’IA ne pouvait pas savoir : son oreille, son audiogramme, son quotidien.">« L’IA n’a vu ni votre oreille ni votre audiogramme. »<span>Ajouter ce qui manque</span></button>
         </div>
+      </div>
       </div>
     </div>
 
@@ -358,7 +369,7 @@ footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);
         </div>
       </div>
       <div class="verdict-test" id="analyse" aria-live="polite">
-        <p style="margin:0;color:var(--muted)">Cinq gestes vérifiés : le contexte, ce qui lui manque, les possibilités sans votre idée, le droit de ne pas savoir, la source exacte.</p>
+        <p style="margin:0;color:var(--muted)">Le résultat apparaîtra ici. Cinq gestes vérifiés : le contexte, ce qui lui manque, les possibilités sans votre idée, le droit de ne pas savoir, la source exacte.</p>
       </div>
     </div>
 
@@ -680,7 +691,7 @@ document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(
 });
 var minuterie;
 function sauverPhrase(){var etat=lire();etat.phrase=champPhrase.value;ecrire(etat);
-  document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone. Lisez-la à votre voisin.';}
+  document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone.';}
 champPhrase.addEventListener('input',function(){ajuster();clearTimeout(minuterie);minuterie=setTimeout(sauverPhrase,400);});
 document.querySelectorAll('[data-idee]').forEach(function(b){
   b.addEventListener('click',function(){
