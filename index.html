@@ -128,13 +128,10 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
   <div class="wrap">
     <a href="#niveau">Mon niveau</a>
     <a href="#tester">Tester ma demande</a>
-    <a href="#gestes">Les 4 gestes</a>
-    <a href="#niveaux">Les 5 niveaux</a>
-    <a href="#demo">La démonstration</a>
-    <a href="#patient">Un patient arrive avec l’IA</a>
-    <a href="#consignes">Gabarit de consignes</a>
-    <a href="#projets">Projets et Gems</a>
-    <a href="#verification">Vérifier une note</a>
+    <a href="#gestes">Les gestes</a>
+    <a href="#niveaux">Les niveaux</a>
+    <a href="#patient">Le patient</a>
+    <a href="#consignes">Consignes</a>
     <a href="#references">Références</a>
   </div>
 </nav>
@@ -143,16 +140,15 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
 
 <section id="niveau">
   <h2>Trouvez votre niveau, puis montez d’un cran</h2>
-  <p class="intro">Huit questions, deux minutes. Vous obtenez votre niveau, un seul geste pour monter au suivant, et un plan selon ce que vous faites avec l’IA. Vos réponses restent dans cet appareil : rien n’est envoyé nulle part. Revenez dans quelques semaines pour mesurer votre progression.</p>
+  <p class="intro">Huit questions, deux minutes. Vous obtenez votre niveau et le geste qui fait monter au suivant. Vos réponses restent dans cet appareil.</p>
 
   <form id="questionnaire" novalidate>
     <fieldset class="q">
       <legend>1. Utilisez-vous une IA comme ChatGPT, Claude, Gemini ou Copilot?</legend>
       <div class="choix">
         <label><input type="radio" name="usage" value="0"> Jamais, ou je l’ai seulement essayée</label>
-        <label><input type="radio" name="usage" value="1"> Quelques fois par mois</label>
-        <label><input type="radio" name="usage" value="2"> Chaque semaine</label>
-        <label><input type="radio" name="usage" value="3"> Presque chaque jour</label>
+                <label><input type="radio" name="usage" value="1"> Parfois</label>
+        <label><input type="radio" name="usage" value="2"> Souvent</label>
       </div>
     </fieldset>
 
@@ -174,9 +170,6 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
         <label><input type="checkbox" name="usages" value="resume"> Résumer un document (guide, norme, article)</label>
         <label><input type="checkbox" name="usages" value="clinique"> Questions cliniques ou techniques</label>
         <label><input type="checkbox" name="usages" value="patient"> Préparer une explication pour un patient</label>
-        <label><input type="checkbox" name="usages" value="traduction"> Traduction</label>
-        <label><input type="checkbox" name="usages" value="admin"> Gestion de la clinique, horaires, tâches répétitives</label>
-        <label><input type="checkbox" name="usages" value="perso"> Pour moi, en dehors du travail</label>
       </div>
     </fieldset>
 
@@ -229,7 +222,6 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
 
     <div class="outils">
       <button type="submit">Voir mon niveau</button>
-      <button type="button" class="second" id="recommencer">Effacer mes réponses</button>
     </div>
     <p class="erreur" id="erreur" hidden>Répondez aux questions 1, 2 et 4 à 8 pour obtenir votre niveau.</p>
   </form>
@@ -239,13 +231,11 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
 
 <section id="tester">
   <h2>Testez votre demande avant de l’envoyer</h2>
-  <p class="intro">Collez ici la demande que vous allez envoyer à l’IA. La page vérifie si elle contient les gestes de la conférence et vous propose la phrase à ajouter. Rien n’est envoyé : la vérification se fait dans votre navigateur.</p>
-  <label for="demande" class="note">Votre demande</label>
-  <textarea id="demande" placeholder="Exemple : Un patient se présente avec un appareil auditif en vente libre acheté aux États-Unis. Mon assistante peut-elle s’en occuper?"></textarea>
+  <p class="intro">Collez votre demande. La page indique les gestes qui manquent et ajoute la phrase pour vous.</p>
+  <textarea id="demande" aria-label="Votre demande" placeholder="Exemple : Un patient se présente avec un appareil auditif en vente libre acheté aux États-Unis. Mon assistante peut-elle s’en occuper?"></textarea>
   <div class="outils">
     <button type="button" id="analyser">Vérifier ma demande</button>
     <button type="button" class="second" id="copier-demande">Copier la demande</button>
-    <button type="button" class="second" id="exemple">Essayer avec l’exemple</button>
   </div>
   <div id="analyse" class="carte" hidden aria-live="polite"></div>
 </section>
@@ -652,7 +642,7 @@ function afficher(r,res,etat){
   h+='</div>';
   h+='<p>'+esc(NIVEAUX[res.niveau].court)+'</p>';
   h+='<div class="geste"><b class="etiq">'+esc(p.etiq)+'</b><b>'+esc(p.titre)+'</b><p>'+esc(p.texte)+'</p>';
-  if(p.phrase)h+='<div class="citation" id="phrase-geste">'+esc(p.phrase)+'</div><button type="button" class="second" id="copier-geste">Copier la phrase</button>';
+  if(p.phrase)h+='<div class="citation" id="phrase-geste">'+esc(p.phrase)+'</div>';
   h+='</div>';
 
   if(r.patients==='oui')h+='<div class="alerte rouge"><b>À changer dès aujourd’hui :</b> aucun renseignement de patient dans un outil grand public, même sans le nom, même avec l’entraînement fermé. L’entreprise conserve les conversations.</div>';
@@ -660,8 +650,8 @@ function afficher(r,res,etat){
   if(r.entrainement==='nsp')h+='<div class="alerte jaune">Vous ne savez pas si l’entraînement est fermé : le chemin pour chaque outil est dans la section « Les 5 niveaux ». Une minute suffit.</div>';
 
   if(r.usages.length){
-    h+='<h3 style="margin-top:18px">Votre plan selon vos usages</h3><div>';
-    r.usages.forEach(function(u){var x=USAGES[u];h+='<div class="plan-usage"><h4>'+esc(x.titre)+'</h4><p>'+esc(x.piege)+'</p><p><b>'+esc(x.geste.split(' : ')[0])+' :</b> '+esc(x.geste.split(' : ').slice(1).join(' : '))+'</p></div>';});
+    h+='<h3 style="margin-top:18px">Pour vos usages</h3><div>';
+    r.usages.forEach(function(u){var x=USAGES[u];h+='<div class="plan-usage"><h4>'+esc(x.titre)+'</h4><p>'+esc((function(g){return g.charAt(0).toUpperCase()+g.slice(1);})(x.geste.replace(/^Le geste\u00a0: /,'')))+'</p></div>';});
     h+='</div>';
   }
 
@@ -672,26 +662,17 @@ function afficher(r,res,etat){
     var msg=diff>0?'Vous avez monté de '+diff+' niveau'+(diff>1?'x':'')+'.':(diff===0?'Même niveau que la dernière fois : le prochain geste est ci-dessus.':'Un niveau plus bas que la dernière fois : vos réponses ont changé, le geste ci-dessus vous remet en route.');
     h+='<p class="historique">Votre test précédent, le '+dateFr(av.date)+' : niveau '+av.niveau+'. Aujourd’hui : niveau '+ap.niveau+'. '+msg+'</p>';
   }else{
-    h+='<p class="historique">Revenez dans quelques semaines refaire le test : la page se souviendra de votre résultat d’aujourd’hui et vous montrera votre progression.</p>';
+    h+='<p class="historique">Revenez refaire le test dans quelques semaines pour voir votre progression.</p>';
   }
-  h+='<div class="outils no-print"><button type="button" id="copier-plan">Copier mon plan</button><button type="button" class="second" id="courriel-plan">Me l’envoyer par courriel</button><button type="button" class="second" id="imprimer-plan">Imprimer</button><button type="button" class="second" id="modifier">Modifier mes réponses</button></div>';
+  h+='<div class="outils no-print"><button type="button" id="copier-plan">Copier mon plan</button><button type="button" class="second" id="refaire">Refaire le test</button></div>';
   h+='</div>';
   out.innerHTML=h;
   out.hidden=false;
 
   var texte=planTexte(r,res);
-  var bg=document.getElementById('copier-geste');
-  if(bg)bg.addEventListener('click',function(){copier(p.phrase,bg);});
   var bp=document.getElementById('copier-plan');
   bp.addEventListener('click',function(){copier(texte,bp);});
-  document.getElementById('courriel-plan').addEventListener('click',function(){
-    window.location.href='mailto:?subject='+encodeURIComponent('Mon plan IA')+'&body='+encodeURIComponent(texte);
-  });
-  document.getElementById('imprimer-plan').addEventListener('click',function(){
-    document.body.classList.add('imprime-plan');window.print();
-    setTimeout(function(){document.body.classList.remove('imprime-plan');},500);
-  });
-  document.getElementById('modifier').addEventListener('click',function(){form.hidden=false;form.scrollIntoView({behavior:'smooth'});});
+  document.getElementById('refaire').addEventListener('click',function(){form.hidden=false;out.hidden=true;form.scrollIntoView({behavior:'smooth'});});
 }
 
 function reponses(){
@@ -718,12 +699,6 @@ form.addEventListener('submit',function(ev){
   document.getElementById('resultat').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
-document.getElementById('recommencer').addEventListener('click',function(){
-  form.reset();
-  var etat=lire();delete etat.reponses;ecrire(etat);
-  document.getElementById('resultat').hidden=true;
-  document.getElementById('erreur').hidden=true;
-});
 
 /* Au retour : on réaffiche le dernier résultat */
 (function(){
@@ -767,11 +742,9 @@ function analyser(){
   if(OPINION.test(t))h+='<div class="critere"><span class="pastille non">!</span><div><p><b>Votre opinion est dans la question</b></p><p>« Je pense que… J’ai raison? » fait pencher la réponse de votre côté. Demandez plutôt les possibilités.</p></div></div>';
   CRITERES.forEach(function(c){
     var ok=c.ok.test(t);if(ok)n++;
-    h+='<div class="critere"><span class="pastille '+(ok?'oui':'non')+'">'+(ok?'✓':'+')+'</span><div><p><b>'+esc(c.titre)+'</b></p><p>'+esc(ok?c.bon:c.manque)+'</p>';
-    if(!ok)h+='<button type="button" class="second" data-ajout="'+c.id+'">Ajouter : '+esc(c.ajout.length>60?c.ajout.slice(0,57)+'…':c.ajout)+'</button>';
-    h+='</div></div>';
+    if(!ok)h+='<div class="critere"><span class="pastille non">+</span><div><p><b>'+esc(c.titre)+'.</b> '+esc(c.manque)+'</p><button type="button" class="second" data-ajout="'+c.id+'">Ajouter cette phrase</button></div></div>';
   });
-  var bilan=n===5?'Les cinq gestes sont là. Envoyez, puis ouvrez la source citée.':n+' geste'+(n>1?'s':'')+' sur 5. Cliquez sur « Ajouter » pour compléter votre demande.';
+  var bilan=n===5?'Les cinq gestes sont là. Envoyez, puis ouvrez la source citée.':n+' geste'+(n>1?'s':'')+' sur 5.';
   box.innerHTML='<p><b>'+esc(bilan)+'</b></p>'+h;
   box.hidden=false;
   box.querySelectorAll('button[data-ajout]').forEach(function(b){
@@ -784,10 +757,6 @@ function analyser(){
   });
 }
 document.getElementById('analyser').addEventListener('click',analyser);
-document.getElementById('exemple').addEventListener('click',function(){
-  champ.value='Un patient se présente avec un appareil auditif en vente libre acheté aux États-Unis. Mon assistante, qui est à distance dans une autre clinique avec le patient, peut-elle s’en occuper? Je pense que oui, j’ai raison?';
-  analyser();
-});
 var bcd=document.getElementById('copier-demande');
 bcd.addEventListener('click',function(){copier(champ.value,bcd);});
 champ.addEventListener('input',function(){try{sessionStorage.setItem('trousse-ia-demande',champ.value);}catch(e){}});
