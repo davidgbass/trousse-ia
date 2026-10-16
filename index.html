@@ -203,28 +203,94 @@ summary small{display:block;font-family:var(--body);font-weight:400;font-size:15
 
 footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
 @media print{body::before,nav,header .actions,.no-print{display:none!important}body{background:#fff}}
+
+/* Accueil : l’escalier */
+header{padding-block:28px 0}
+header h1{font-size:clamp(34px,6vw,58px);line-height:1;font-weight:700}
+header h1 em{font-style:italic;font-weight:400;color:var(--teal)}
+header .sous{font-size:18px;color:var(--muted);margin:12px 0 0}
+.escalier-accueil{padding-block:22px 10px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}
+.scene-tete{padding:20px clamp(18px,4vw,30px) 0}
+.scene-tete h2{font-size:clamp(26px,4vw,36px)}
+.scene-tete p{margin:6px 0 0;color:var(--muted);font-size:18px}
+.scene-image{position:relative;max-width:900px;margin:0 auto}
+.scene-image img{width:100%}
+.marche-btn{position:absolute;transform:translate(-50%,-50%) scale(0);width:46px;height:46px;border-radius:50%;border:3px solid var(--card);background:var(--teal);color:var(--on-teal);font:700 19px var(--display);cursor:pointer;box-shadow:0 6px 16px -6px rgba(0,0,0,.45);animation:pose .45s cubic-bezier(.3,1.5,.5,1) forwards;transition:background .15s,transform .15s}
+.marche-btn:nth-of-type(1){animation-delay:.35s}.marche-btn:nth-of-type(2){animation-delay:.5s}.marche-btn:nth-of-type(3){animation-delay:.65s}.marche-btn:nth-of-type(4){animation-delay:.8s}.marche-btn:nth-of-type(5){animation-delay:.95s}
+@keyframes pose{to{transform:translate(-50%,-50%) scale(1)}}
+.marche-btn::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--teal);opacity:0;animation:onde 2.4s ease-out 1.4s 2}
+@keyframes onde{0%{opacity:.7;transform:scale(.8)}100%{opacity:0;transform:scale(1.6)}}
+.marche-btn:hover{transform:translate(-50%,-50%) scale(1.1)}
+.marche-btn.ici{background:var(--ochre);color:#24302E;transform:translate(-50%,-50%) scale(1.15)}
+.marche-btn.ici::before{content:"Vous êtes ici";position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);white-space:nowrap;font:700 13px var(--body);background:var(--ink);color:var(--paper);padding:4px 9px;border-radius:999px}
+.puces-niveaux{display:flex;flex-wrap:wrap;gap:8px;padding:14px clamp(14px,3vw,24px) 20px;border-top:1px solid var(--line)}
+.puces-niveaux button{display:inline-flex;align-items:center;gap:8px;font:16px var(--body);color:var(--ink);background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:7px 14px 7px 7px;cursor:pointer}
+.puces-niveaux button b{width:26px;height:26px;border-radius:50%;display:grid;place-content:center;background:var(--mint);color:var(--teal-deep);font-family:var(--display)}
+.puces-niveaux button:hover{border-color:var(--teal)}
+.puces-niveaux button.ici{border-color:var(--teal);background:var(--mint)}
+.puces-niveaux button.ici b{background:var(--ochre);color:#24302E}
+.mon-geste{margin-top:16px;display:grid;gap:14px;animation:entre .4s ease both}
+@media (min-width:860px){.mon-geste{grid-template-columns:1.05fr 1fr;align-items:start}}
+.geste-choisi{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:var(--shadow)}
+.geste-choisi .niv-titre{font-family:var(--display);font-size:24px;font-weight:600;margin:4px 0 10px}
+.geste-choisi p{margin:6px 0}
+.ma-phrase{background:var(--teal-deep);color:#FAF6EC;border-radius:22px;padding:20px 22px}
+.ma-phrase .surtitre{color:#E9B949;display:block}
+.ma-phrase textarea{min-height:110px;background:#FFFDF7;color:#24302E;border-color:transparent;font-family:var(--display);font-size:20px;line-height:28px;font-style:italic;background-image:none}
+.phrase-aide{margin:10px 0 0;font-size:15px;opacity:.85}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ma-phrase{background:#0E1716;border:1px solid var(--line)}}
+:root[data-theme="dark"] .ma-phrase{background:#0E1716;border:1px solid var(--line)}
+.affiner{grid-column:1/-1;margin:0;font-weight:700}
+.affiner a{text-decoration:none}
+@media (max-width:560px){.marche-btn{width:38px;height:38px;font-size:16px}.marche-btn.ici::before{font-size:11px}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="wrap hero">
-    <div>
-      <p class="surtitre apparait">Congrès 2026 · Audioprothésistes du Québec</p>
-      <h1 class="apparait">L’IA, nouvel acteur <em>de l’équipe</em></h1>
-      <p class="sous apparait">Piloter l’IA en gardant son jugement professionnel.</p>
-      <p class="auteur apparait">La trousse de la conférence de David Gélinas, audioprothésiste</p>
-      <div class="actions apparait">
-        <a class="btn" href="#niveau">Trouver mon niveau</a>
-        <a class="btn clair" href="#tester">Tester ma demande</a>
-      </div>
-    </div>
-    <figure class="apparait">
-      <img src="img/escalier.webp" width="1100" height="613" alt="Une audioprothésiste monte un escalier de cinq marches : un colis fermé, une question, des documents, deux tablettes qui se consultent, puis une boîte à outils.">
-      <figcaption>Cinq niveaux, un geste à la fois</figcaption>
-    </figure>
+  <div class="wrap">
+    <p class="surtitre apparait">Congrès 2026 · Audioprothésistes du Québec</p>
+    <h1 class="apparait">L’IA, nouvel acteur <em>de l’équipe</em></h1>
+    <p class="sous apparait">La trousse de la conférence de David Gélinas, audioprothésiste.</p>
   </div>
 </header>
+
+<section id="escalier" class="escalier-accueil">
+  <div class="wrap">
+    <div class="scene apparait">
+      <div class="scene-tete">
+        <h2>Où êtes-vous sur l’escalier?</h2>
+        <p>Touchez votre marche.</p>
+      </div>
+      <div class="scene-image">
+        <img src="img/escalier.webp" width="1100" height="613" alt="Une audioprothésiste monte un escalier de cinq marches : un colis fermé, une question, des documents, deux tablettes qui se consultent, puis une boîte à outils.">
+        <button type="button" class="marche-btn" data-n="0" style="left:21.8%;top:78%" aria-label="Niveau 0 : Je n’utilise pas l’IA">0</button>
+        <button type="button" class="marche-btn" data-n="1" style="left:40.9%;top:62%" aria-label="Niveau 1 : Je pose des questions">1</button>
+        <button type="button" class="marche-btn" data-n="2" style="left:53.6%;top:56%" aria-label="Niveau 2 : Je lui donne mes documents">2</button>
+        <button type="button" class="marche-btn" data-n="3" style="left:64.5%;top:40%" aria-label="Niveau 3 : Je demande un deuxième avis">3</button>
+        <button type="button" class="marche-btn" data-n="4" style="left:79.5%;top:31%" aria-label="Niveau 4 : Je construis mes outils">4</button>
+      </div>
+      <div class="puces-niveaux" role="group" aria-label="Choisir son niveau">
+        <button type="button" data-n="0"><b>0</b>Je n’utilise pas l’IA</button>
+        <button type="button" data-n="1"><b>1</b>Je pose des questions</button>
+        <button type="button" data-n="2"><b>2</b>Je lui donne mes documents</button>
+        <button type="button" data-n="3"><b>3</b>Je demande un deuxième avis</button>
+        <button type="button" data-n="4"><b>4</b>Je construis mes outils</button>
+      </div>
+    </div>
+
+    <div id="mon-geste" class="mon-geste" hidden aria-live="polite">
+      <div class="geste-choisi" id="geste-choisi"></div>
+      <div class="ma-phrase">
+        <label for="phrase" class="surtitre">Votre phrase</label>
+        <textarea id="phrase" rows="3"></textarea>
+        <p class="phrase-aide"><span id="phrase-etat">Lisez-la à votre voisin. Elle reste dans votre téléphone.</span></p>
+      </div>
+      <p class="affiner"><a href="#niveau">Affiner mon niveau en 2 minutes ↓</a></p>
+    </div>
+  </div>
+</section>
 
 <nav aria-label="Sections">
   <div class="wrap">
@@ -243,8 +309,8 @@ footer{margin-top:56px;padding-block:28px 48px;border-top:1px solid var(--line);
 <section id="niveau">
   <div class="wrap etroit">
     <p class="surtitre">Deux minutes</p>
-    <h2>Trouvez votre niveau, puis montez d’un cran</h2>
-    <p class="chapeau">Huit questions, une à la fois. Vous repartez avec votre niveau et le seul geste qui fait monter au suivant.</p>
+    <h2>Affinez votre niveau</h2>
+    <p class="chapeau">Huit questions, une à la fois, pour un niveau plus juste que l’escalier et un geste adapté à vos usages.</p>
     <p class="prive">Vos réponses restent dans cet appareil. Rien n’est envoyé.</p>
 
     <div class="carnet">
@@ -782,7 +848,7 @@ function terminer(){
   var d=new Date(),iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
   var hist=etat.historique||[];
   if(hist.length&&hist[hist.length-1].date===iso)hist[hist.length-1].niveau=res.niveau;else hist.push({date:iso,niveau:res.niveau});
-  etat.historique=hist.slice(-12);etat.reponses=r;ecrire(etat);
+  etat.historique=hist.slice(-12);etat.reponses=r;etat.place=res.niveau;ecrire(etat);if(window.placer)window.placer(res.niveau,false);
   afficher(r,res,etat);
   document.getElementById('niveau').scrollIntoView({behavior:'smooth'});
 }
@@ -796,6 +862,36 @@ montrer(0);
   if(['usage','entrainement','contexte','documents','avis','outil','patients'].some(function(k){return r[k]===null;}))return;
   afficher(r,calculer(r),etat);
 })();
+
+
+/* Accueil : se placer sur l’escalier, écrire sa phrase */
+var PROCHAIN_PLACE={0:'installer',1:'contexte',2:'avis',3:'outil',4:'maitrise'};
+var DEBUT_PHRASE='Si un patient arrive avec un conseil de l’IA, alors je ';
+var champPhrase=document.getElementById('phrase');
+function placer(n,defiler){
+  document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){b.classList.toggle('ici',+b.getAttribute('data-n')===n);});
+  var etat=lire();
+  var cle=(etat.reponses&&etat.place===n&&etat.reponses.patients)?calculer(etat.reponses).prochain:PROCHAIN_PLACE[n];
+  var p=PROCHAIN[cle];
+  var h='<p class="surtitre" style="margin:0">Niveau '+n+' · '+esc(NIVEAUX[n].nom)+'</p><p class="niv-titre">'+esc(p.titre)+'</p><p>'+esc(p.texte)+'</p>';
+  if(p.phrase)h+='<p class="dire">« '+esc(p.phrase)+' »</p>';
+  document.getElementById('geste-choisi').innerHTML=h;
+  var bloc=document.getElementById('mon-geste');bloc.hidden=false;
+  if(!champPhrase.value)champPhrase.value=etat.phrase||DEBUT_PHRASE;setTimeout(function(){if(window.ajusterPhrase)window.ajusterPhrase();},0);
+  if(defiler){bloc.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){champPhrase.focus();champPhrase.setSelectionRange(champPhrase.value.length,champPhrase.value.length);},500);}
+}
+window.placer=placer;window.ajusterPhrase=function(){ajuster();};
+document.querySelectorAll('.marche-btn,.puces-niveaux button').forEach(function(b){
+  b.addEventListener('click',function(){var n=+b.getAttribute('data-n');var etat=lire();etat.place=n;ecrire(etat);placer(n,true);});
+});
+function ajuster(){champPhrase.style.height='auto';champPhrase.style.height=(champPhrase.scrollHeight+4)+'px';}
+var minuterie;
+champPhrase.addEventListener('input',function(){
+  ajuster();clearTimeout(minuterie);
+  minuterie=setTimeout(function(){var etat=lire();etat.phrase=champPhrase.value;ecrire(etat);
+    document.getElementById('phrase-etat').textContent='Enregistrée dans votre téléphone. Lisez-la à votre voisin.';},400);
+});
+(function(){var etat=lire();if(typeof etat.place==='number'){champPhrase.value=etat.phrase||DEBUT_PHRASE;placer(etat.place,false);ajuster();}})();
 
 /* Testeur de demande */
 var CRITERES=[
