@@ -60,9 +60,6 @@ td.pct{font-weight:bold;color:var(--teal);white-space:nowrap;font-variant-numeri
 .refs li{font-size:15px;margin:6px 0}
 a{color:var(--teal2)}
 footer{margin-top:48px;padding:24px 0 48px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-#fiche .feuille{border:1px solid var(--line);border-radius:12px;padding:22px}
-#fiche .feuille h3{font-size:22px}
-.ligne{border-bottom:1px solid var(--muted);height:28px;margin:6px 0 14px}
 
 /* Questionnaire */
 .q{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 12px}
@@ -109,13 +106,10 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
 @media print{
   body{font-size:12.5pt;background:#fff;color:#000}
   nav,header,footer,.no-print{display:none!important}
-  body.imprime-fiche section:not(#fiche){display:none}
-  body.imprime-fiche #fiche .intro,body.imprime-fiche #fiche h2{display:none}
   body.imprime-plan section:not(#niveau){display:none}
   body.imprime-plan #questionnaire{display:none}
   section{padding:0}
-  .carte,.feuille,.niveau{border-color:#999;break-inside:avoid}
-  #fiche .feuille{border:0;padding:0}
+  .carte,.niveau{border-color:#999;break-inside:avoid}
 }
 </style>
 </head>
@@ -138,7 +132,6 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
     <a href="#niveaux">Les 5 niveaux</a>
     <a href="#demo">La démonstration</a>
     <a href="#patient">Un patient arrive avec l’IA</a>
-    <a href="#fiche">Fiche patient</a>
     <a href="#consignes">Gabarit de consignes</a>
     <a href="#projets">Projets et Gems</a>
     <a href="#verification">Vérifier une note</a>
@@ -413,30 +406,6 @@ textarea{width:100%;min-height:150px;font:16px/1.5 Arial,Helvetica,sans-serif;co
   <p>Complétez la phrase et gardez-la à portée de main : « Si un patient arrive avec un conseil de l’IA, alors je… »</p>
 </section>
 
-<section id="fiche">
-  <h2>Fiche à remettre au patient</h2>
-  <p class="intro">Une page à imprimer et à remettre, ou à envoyer par courriel.</p>
-  <div class="outils no-print"><button type="button" id="imprimer">Imprimer la fiche</button></div>
-  <div class="feuille">
-    <h3>Vous avez posé une question à l’IA sur votre audition?</h3>
-    <p>C’est une bonne idée de vous informer. Apportez la réponse à votre rendez-vous, avec la question exacte que vous avez posée. On la regardera ensemble.</p>
-    <p><b>Ce que l’outil ne sait pas :</b> il n’a pas vu votre audiogramme, il n’a pas examiné vos oreilles et il ne connaît pas votre quotidien. Votre audioprothésiste, oui.</p>
-    <p><b>Pour obtenir une meilleure réponse :</b></p>
-    <ul>
-      <li>Demandez les causes possibles, plutôt que de lui dire ce que vous pensez déjà.</li>
-      <li>Demandez-lui ce qui lui manque pour bien vous répondre.</li>
-      <li>Demandez les sources, et ouvrez-les.</li>
-      <li>Un chiffre précis ou une étude citée peut être inventé. Vérifiez-le avant de vous y fier.</li>
-    </ul>
-    <p><b>Protégez vos renseignements :</b> n’écrivez pas votre nom, votre numéro d’assurance maladie ni vos résultats d’examens dans un outil d’IA.</p>
-    <p><b>Consultez un médecin sans attendre</b> si vous perdez l’audition soudainement, si vous avez de la douleur ou un écoulement à l’oreille, ou des étourdissements importants. Ne demandez pas à l’IA d’abord.</p>
-    <p>Mon audioprothésiste :</p>
-    <div class="ligne"></div>
-    <p>Téléphone :</p>
-    <div class="ligne"></div>
-  </div>
-</section>
-
 <section id="consignes">
   <h2>Gabarit de consignes</h2>
   <p class="intro">Adaptez le premier bloc à votre pratique, puis collez les deux blocs une seule fois. Les règles s’appliquent ensuite à chaque conversation.</p>
@@ -600,11 +569,6 @@ document.querySelectorAll('.refs li[data-q]').forEach(function(li){
 });
 document.querySelectorAll('button[data-copie]').forEach(function(b){
   b.addEventListener('click',function(){copier(document.getElementById(b.getAttribute('data-copie')).innerText,b);});
-});
-document.getElementById('imprimer').addEventListener('click',function(){
-  document.body.classList.add('imprime-fiche');
-  window.print();
-  setTimeout(function(){document.body.classList.remove('imprime-fiche');},500);
 });
 
 /* Mémoire locale */
